@@ -6,28 +6,5 @@
       "name": "Davide",
       "surname": "Carizzoni"
     }
-  ],
-  "todos": [
-    {
-      "id": 1,
-      "title": "PROVA inserimento",
-      "description": "descrizione",
-      "steps": [],
-      "users": []
-    },
-    {
-      "id": 2,
-      "title": "df",
-      "description": "df",
-      "steps": [],
-      "users": ["davidecarizzoni"]
-    },
-    {
-      "id": 3,
-      "title": "PROVA DOPO ELIMINAZINOE SERVER SERVICE",
-      "description": "PROVA",
-      "steps": [],
-      "users": ["davidecarizzoni"]
-    }
   ]
 }

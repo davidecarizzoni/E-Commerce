@@ -1,6 +1,5 @@
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { retrieveAllTodos } from './redux/todos/todos.actions';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,6 @@ export class AppComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(retrieveAllTodos());
   }
 
 
