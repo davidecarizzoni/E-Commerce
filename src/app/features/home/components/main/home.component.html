@@ -1,0 +1,6 @@
+<h1>MY TODOS APP</h1> <hr>
+<h4>Benvenuto {{user | async}}!</h4> <hr>
+
+<h3 routerLink="/todos">I MIEI TODO</h3> <hr>
+<!-- RETURN THE FIRST TODO -->
+<app-todo-preview [todo]="todo | async"></app-todo-preview>
