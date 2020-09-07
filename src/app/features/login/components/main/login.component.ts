@@ -21,8 +21,9 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    this.loginService.executeLogin(this.loginForm.get('username').value);
+    this.loginService.executeLogin(this.loginForm.get('username').value, this.loginForm.get('password').value);
+    //LOG
     console.log(this.loginForm.get('username').value)
+    console.log(this.loginForm.get('password').value)
   }
-
 }
