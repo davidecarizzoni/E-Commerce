@@ -1,6 +1,5 @@
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { retrieveAllUsers } from './redux/users/users.action';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +14,7 @@ export class AppComponent implements OnInit {
   title: string;
   constructor(private store: Store) {}
 
-  ngOnInit(): void {
-    this.store.dispatch(retrieveAllUsers());
-  }
+  ngOnInit(): void {}
 
 
 }

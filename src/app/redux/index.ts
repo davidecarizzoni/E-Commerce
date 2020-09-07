@@ -5,6 +5,6 @@ export interface AppState {
     usersState: UsersState;
 }
 
-export const reducers: ActionReducerMap<AppState> = {
-    usersState: usersReducer
-};
+// export const reducers: ActionReducerMap<AppState> = {
+//     usersState: usersReducer
+// };

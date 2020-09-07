@@ -28,7 +28,8 @@ export class SignupComponent implements OnInit {
       password: ['', Validators.required]
     })
   }
-
+  ngOnInit(): void {}
+  
   doSignUp(){
 
     console.log("Signup button clicked")
@@ -42,6 +43,6 @@ export class SignupComponent implements OnInit {
     this.registrationService.insertUser(this.user);
   }
 
-  ngOnInit(): void {}
+  
 
 }
