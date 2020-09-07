@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   //constructor(private todosServerService: TodosServerService, private store: Store) {}
 
   //Il todosSererService non serve più con la creazione dell'effect
+  title: string;
   constructor(private store: Store) {}
 
   ngOnInit(): void {
