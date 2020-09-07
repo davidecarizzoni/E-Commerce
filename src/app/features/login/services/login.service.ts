@@ -1,6 +1,6 @@
 
 import { Store } from '@ngrx/store';
-import { AuthService } from './../../../core/services/auth.service';
+import { AuthService } from '../../../core/services/login.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/model/user.interface';
