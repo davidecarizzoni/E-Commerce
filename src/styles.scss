@@ -1,5 +1,5 @@
-$coloreInizioSfumatura: rgba(129, 211, 248, 1) 100%;
-$coloreFineSfumatura:  rgba(194, 128, 255, 1) 0%;
+$coloreInizioSfumatura: rgba(129, 211, 248, 1) 0%;
+$coloreFineSfumatura:  rgba(194, 128, 255, 1) 100%;
 body {
     background-image: linear-gradient(to right, $coloreInizioSfumatura, $coloreFineSfumatura);
     background-repeat: repeat-y;

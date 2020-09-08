@@ -6,8 +6,8 @@
 
 
 <div class="login">
-    <form [formGroup]="loginForm" (ngSubmit)="doLogin()" class="loginForm">
-        <button class="btn-registrati" routerLink="/signin">+</button>
+    <form [formGroup]="loginForm" class="loginForm">
+        <button class="btn-registrati" routerLink="/signup"> + </button>
         <div>
             <img src="../../../assets/logo.png" alt="logo" class="logo">
             <p class="title">Accedi</p>
@@ -26,7 +26,7 @@
                 <span class="slider round"></span>
             </label>
         </div>
-        <button type="submit">
+        <button type="submit" (onClick)="doLogin()">
             <span> Login </span>
         </button>
     </form>
