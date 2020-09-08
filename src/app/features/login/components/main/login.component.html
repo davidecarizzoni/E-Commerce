@@ -1,5 +1,31 @@
-<form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+<!-- <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
     <app-input-text formControlName="username" [label]="'Username'"></app-input-text>
     <app-input-text formControlName="password" [label]="'Password'"></app-input-text>
     <button type="submit">Login</button>
-</form>
+</form> -->
+
+
+<div class="login">
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()"class="loginForm">
+        <button class="btn-registrati" routerLink="/signin">+</button>
+        <div>
+            <img src="../../../assets/logo.png" alt="logo" class="logo">
+            <p class="title">Accedi</p>
+            <input id="username" placeholder="username" class="inputFields">
+        </div>
+        <div>
+            <input id="password" placeholder="password" class="inputFieldsPassword">
+            <img src="../../../assets/icone/eye.png" alt="occhio" class="eye">
+        </div>
+        <div>
+            <span class="password">Memorizza password</span>
+            <label class="switch">
+                <input type="checkbox" formControlName="salva">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <button type="submit">
+            <span> Login </span>
+        </button>
+    </form>
+</div>
