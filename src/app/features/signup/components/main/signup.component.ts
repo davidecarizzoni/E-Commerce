@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignupService } from '../../services/signup.service';
 import { User } from 'src/app/core/model/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,7 @@ export class SignupComponent implements OnInit {
     password: null,
   }
 
-  constructor(fb: FormBuilder, private signUpService: SignupService) {
+  constructor(fb: FormBuilder, private signUpService: SignupService, private router:Router) {
     this.signUpForm = fb.group({
       username: ['', Validators.required],
       name: ['', Validators.required],
@@ -39,6 +40,7 @@ export class SignupComponent implements OnInit {
     console.log(this.user);
 
     this.signUpService.executeSignUp(this.user);
+    this.router.navigateByUrl('login');
   }
 
 
