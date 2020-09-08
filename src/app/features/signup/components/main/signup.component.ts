@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
     password: null,
   }
 
-  constructor(fb: FormBuilder, private signUpService: SignupService, private router: Router) {
+  constructor(fb: FormBuilder, private signUpService: SignupService, private router:Router) {
     this.signUpForm = fb.group({
       username: ['', Validators.required],
       name: [''],
@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
     console.log(this.user);
 
     this.signUpService.executeSignUp(this.user);
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('login');
   }
 
 
