@@ -8,20 +8,6 @@
       "password": "1234"
     },
     {
-      "username": "",
-      "surname": "",
-      "name": "",
-      "password": "",
-      "id": 1
-    },
-    {
-      "username": "",
-      "surname": "",
-      "name": "",
-      "password": "",
-      "id": 2
-    },
-    {
       "username": "df",
       "surname": "",
       "name": "",
@@ -34,6 +20,20 @@
       "name": "dfdfdf",
       "password": "dfdf",
       "id": 4
+    },
+    {
+      "username": "dd",
+      "surname": "dd",
+      "name": "dd",
+      "password": "dd",
+      "id": 5
+    },
+    {
+      "username": "fddf",
+      "surname": "dff",
+      "name": "dffd",
+      "password": "dfdf",
+      "id": 6
     }
   ],
   "todos": [

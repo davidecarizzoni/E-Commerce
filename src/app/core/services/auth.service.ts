@@ -11,7 +11,7 @@ export class AuthService {
   //LOGIN - HttpCommunicationService
   doLogin(username: string, password: string): Observable<User[]>{
     console.log("Do login auth service");
-    return this.httpCommunications.retrieveGetCall<User[]>("users",{username,password});
+    return this.httpCommunications.retrieveGetCall<User[]>("users",{username, password});
   }
 
   //SIGNUP - HttpCommunicationService
