@@ -6,20 +6,22 @@
 
 
 <div class="login">
-    <form [formGroup]="loginForm" (ngSubmit)="doLogin()"class="loginForm">
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()" class="loginForm">
         <button class="btn-registrati" routerLink="/signin">+</button>
         <div>
             <img src="../../../assets/logo.png" alt="logo" class="logo">
             <p class="title">Accedi</p>
-            <input id="username" placeholder="username" class="inputFields">
+            <input id="username" placeholder="Username" class="inputFields">
         </div>
         <div>
-            <input id="password" placeholder="password" class="inputFieldsPassword">
+            <input id="password" placeholder="Password" class="inputFieldsPassword">
+            <!-- Implementare copertura PW -->
             <img src="../../../assets/icone/eye.png" alt="occhio" class="eye">
         </div>
         <div>
             <span class="password">Memorizza password</span>
             <label class="switch">
+                <!-- Implementare memorizza PW -->
                 <input type="checkbox" formControlName="salva">
                 <span class="slider round"></span>
             </label>

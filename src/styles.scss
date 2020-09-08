@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+$coloreInizioSfumatura: rgba(129, 211, 248, 1) 100%;
+$coloreFineSfumatura:  rgba(194, 128, 255, 1) 0%;
+body {
+    background-image: linear-gradient(to right, $coloreInizioSfumatura, $coloreFineSfumatura);
+    background-repeat: repeat-y;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+}
