@@ -8,24 +8,24 @@
       "password": "1234"
     },
     {
-      "username": "prova",
-      "surname": "prova",
-      "name": "prova",
-      "password": "prova",
+      "username": "",
+      "surname": "",
+      "name": "",
+      "password": "",
       "id": 1
     },
     {
-      "username": "2",
-      "surname": "2",
-      "name": "2",
-      "password": "2",
+      "username": "",
+      "surname": "",
+      "name": "",
+      "password": "",
       "id": 2
     },
     {
-      "username": "3",
-      "surname": "3",
-      "name": "3",
-      "password": "3",
+      "username": "df",
+      "surname": "",
+      "name": "",
+      "password": "df",
       "id": 3
     }
   ],

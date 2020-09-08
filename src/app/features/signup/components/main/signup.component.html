@@ -1,7 +1,27 @@
-<form [formGroup]="signUpForm" (ngSubmit)="doSignUp()">
+<!-- <form [formGroup]="signUpForm" (ngSubmit)="doSignUp()">
     <app-input-text formControlName="username" [label]="'Username'" required></app-input-text>
     <app-input-text formControlName="name" [label]="'Name'" required></app-input-text>
     <app-input-text formControlName="surname" [label]="'Surname'" required></app-input-text>
     <app-input-text formControlName="password" [label]="'Password'" required></app-input-text>
     <button type="submit">Signup</button>
-</form>
+</form> -->
+
+
+<div class="signup">
+    <form [formGroup]="signUpForm" class="signUpForm">
+        <button class="btn-registrati" routerLink="/login"> × </button>
+        <div>
+            <img src="../assets/logo.png" alt="logo" class="logo">
+            <p class="title">Sign Up</p>
+            <input formControlName="username" id="username" placeholder="username" class="inputFields" required minlength="5">
+        </div>
+        <div>
+            <input formControlName="password" id="password" placeholder="password" class="inputFieldsPassword" required minlength="8">
+            <img src="../../../assets/icone/eye.png" alt="occhio" class="eye">
+        </div>
+        <br><br>
+        <button type="submit" (click)="doSignUp()">
+            <span>Registrati</span>
+        </button>
+    </form>
+</div>
