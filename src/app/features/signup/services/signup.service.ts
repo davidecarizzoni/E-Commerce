@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/core/model/user.interface';
-import { addUser } from 'src/app/redux/users/users.action';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignupService {
 
-  constructor(private store: Store) { }
+  constructor(private router: Router, private authService: AuthService, private store: Store) { }
 
-  insertUser(user: User){
-    this.store.dispatch(addUser({user}))
+  executeSignUp(user: User){
+    console.log("Signup service")
+
+    this.authService.doSignUp(user).subscribe(()=>{"Signup ok"}, ()=>{"Signup error"})
   }
 }

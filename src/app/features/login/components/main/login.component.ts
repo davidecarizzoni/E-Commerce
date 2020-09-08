@@ -8,7 +8,6 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  
   loginForm: FormGroup;
 
   constructor(fb: FormBuilder, private loginService: LoginService) {
@@ -18,6 +17,9 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  ngOnInit(): void {
+  }
+
   doLogin() {
     this.loginService.executeLogin(this.loginForm.get('username').value, this.loginForm.get('password').value);
     //LOG
@@ -25,5 +27,4 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.get('password').value)
   }
 
-  ngOnInit(): void {}
 }

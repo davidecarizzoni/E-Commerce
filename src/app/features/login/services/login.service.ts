@@ -1,10 +1,10 @@
 
 import { Store } from '@ngrx/store';
+import { AuthService } from './../../../core/services/auth.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/model/user.interface';
 import { saveCurrentUser } from 'src/app/redux/users/users.action';
-import { AuthService } from 'src/app/core/services/auth.service';
 
 @Injectable()
 export class LoginService {
@@ -13,6 +13,7 @@ export class LoginService {
 
   executeLogin(username: string, password: string) {
     console.log("LOGIN SERVICE");
+    
     this.authService.doLogin(username, password).subscribe((users: User[]) => {
       if (users && users.length > 0) {
         sessionStorage.setItem("user", JSON.stringify(users[0]));

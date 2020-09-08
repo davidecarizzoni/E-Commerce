@@ -1,21 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap} from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 import { HttpCommunicationsService } from 'src/app/core/http-communication/http-communication.service';
-import { addUser, udpateUser } from './users.action';
+import { retrieveAllUsers, initUsers, postUser, insertUser } from './users.action';
 import { User } from 'src/app/core/model/user.interface';
 
 @Injectable()
-export class UsersEffects {
+export class UsersEffect {
 
-    addUser$ = createEffect(() =>this.actions$.pipe(
-        ofType(addUser),
-        switchMap(action => this.httpCommunicationsService.retrievePostCall<User>("users",action.user).pipe(
-            switchMap(user => {
-                return [udpateUser({user})]
-            }) 
+    retrieveAllUsers$ = createEffect(() => this.actions$.pipe(
+        ofType(retrieveAllUsers),
+        switchMap(() => this.httpCommunicationsService.retrieveGetCall<User[]>("users").pipe(
+            map(users => initUsers({ users }))
         ))
     ));
 
-    constructor(private actions$: Actions, private httpCommunicationsService: HttpCommunicationsService) {}
+    insertUser$ = createEffect(() => this.actions$.pipe(
+        ofType(postUser),
+        switchMap(action => this.httpCommunicationsService.retrievePostCall<User>("users/", action.user).pipe(
+            switchMap(user => [insertUser({ user })])
+        ))
+    ))
+    
+    constructor(private actions$: Actions, private store: Store,
+        private httpCommunicationsService: HttpCommunicationsService) {
+    }
+
 }

@@ -4,7 +4,49 @@
       "id": 0,
       "username": "davidecarizzoni",
       "name": "Davide",
-      "surname": "Carizzoni"
+      "surname": "Carizzoni",
+      "password": "1234"
+    },
+    {
+      "username": "prova",
+      "surname": "prova",
+      "name": "prova",
+      "password": "prova",
+      "id": 1
+    },
+    {
+      "username": "2",
+      "surname": "2",
+      "name": "2",
+      "password": "2",
+      "id": 2
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "title": "PROVA inserimento",
+      "description": "descrizione",
+      "steps": [],
+      "users": []
+    },
+    {
+      "id": 2,
+      "title": "df",
+      "description": "df",
+      "steps": [],
+      "users": [
+        "davidecarizzoni"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "PROVA DOPO ELIMINAZINOE SERVER SERVICE",
+      "description": "PROVA",
+      "steps": [],
+      "users": [
+        "davidecarizzoni"
+      ]
     }
   ]
 }

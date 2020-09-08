@@ -1,7 +1,7 @@
 <form [formGroup]="signUpForm" (ngSubmit)="doSignUp()">
-    <app-input-text formControlName="username" [label]="'Username'"></app-input-text>
-    <app-input-text formControlName="name" [label]="'Name'"></app-input-text>
-    <app-input-text formControlName="surname" [label]="'Surname'"></app-input-text>
-    <app-input-text formControlName="password" [label]="'Password'"></app-input-text>
-    <button type="submit">SignUp</button>
+    <app-input-text formControlName="username" [label]="'Username'" required></app-input-text>
+    <app-input-text formControlName="name" [label]="'Name'" required></app-input-text>
+    <app-input-text formControlName="surname" [label]="'Surname'" required></app-input-text>
+    <app-input-text formControlName="password" [label]="'Password'" required></app-input-text>
+    <button type="submit">Signup</button>
 </form>
