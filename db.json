@@ -6,20 +6,6 @@
       "name": "Davide",
       "surname": "Carizzoni",
       "password": "1234"
-    },
-    {
-      "username": "signup",
-      "surname": "",
-      "name": "",
-      "password": "signup",
-      "id": 1
-    },
-    {
-      "username": "prova",
-      "surname": "",
-      "name": "",
-      "password": "prova",
-      "id": 2
     }
   ]
 }
