@@ -1,7 +1,27 @@
-<form [formGroup]="signUpForm" >
+<!-- <form [formGroup]="signUpForm" >
     <app-input-text formControlName="username" [label]="'Username'" required></app-input-text>
     <app-input-text formControlName="name" [label]="'Name'" required></app-input-text>
     <app-input-text formControlName="surname" [label]="'Surname'" required></app-input-text>
     <app-input-text formControlName="password" [label]="'Password'" required></app-input-text>
     <button type="submit" (click)="doSignUp()">Signup</button>
-</form>
+</form> -->
+
+
+<div class="signup">
+    <form [formGroup]="signUpForm" class="signupForm">
+        <button class="btn-registrati" routerLink="/login">×</button>
+        <div>
+            <img src="../assets/logo.png" alt="logo" class="logo">
+            <p class="title">Sign up</p>
+            <input id="username" placeholder="username" formControlName="username" class="inputFields">
+        </div>
+        <div>
+            <input id="password" placeholder="password" formControlName="password" class="inputFieldsPassword">
+            <img src="../../../assets/icone/eye.png" alt="occhio" class="eye">
+        </div>
+        <br><br>
+        <button type="submit"(click)="doSignUp()" >
+            <span>Sign up</span>
+        </button>
+    </form>
+</div>

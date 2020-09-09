@@ -8,87 +8,18 @@
       "password": "1234"
     },
     {
-      "username": "df",
+      "username": "signup",
       "surname": "",
       "name": "",
-      "password": "df",
-      "id": 3
+      "password": "signup",
+      "id": 1
     },
     {
-      "username": "fddf",
-      "surname": "dffdfdf",
-      "name": "dfdfdf",
-      "password": "dfdf",
-      "id": 4
-    },
-    {
-      "username": "dd",
-      "surname": "dd",
-      "name": "dd",
-      "password": "dd",
-      "id": 5
-    },
-    {
-      "username": "fddf",
-      "surname": "dff",
-      "name": "dffd",
-      "password": "dfdf",
-      "id": 6
-    },
-    {
-      "username": "rt",
-      "surname": "rt",
-      "name": "rt",
-      "password": "rtrtrtrtrt",
-      "id": 7
-    },
-    {
-      "username": "io",
+      "username": "prova",
       "surname": "",
       "name": "",
-      "password": "io",
-      "id": 8
-    },
-    {
-      "username": "rrr",
-      "surname": "rrr",
-      "name": "rrr",
-      "password": "rrr",
-      "id": 9
-    },
-    {
-      "username": "",
-      "surname": "",
-      "name": "",
-      "password": "",
-      "id": 10
-    }
-  ],
-  "todos": [
-    {
-      "id": 1,
-      "title": "PROVA inserimento",
-      "description": "descrizione",
-      "steps": [],
-      "users": []
-    },
-    {
-      "id": 2,
-      "title": "df",
-      "description": "df",
-      "steps": [],
-      "users": [
-        "davidecarizzoni"
-      ]
-    },
-    {
-      "id": 3,
-      "title": "PROVA DOPO ELIMINAZINOE SERVER SERVICE",
-      "description": "PROVA",
-      "steps": [],
-      "users": [
-        "davidecarizzoni"
-      ]
+      "password": "prova",
+      "id": 2
     }
   ]
 }
