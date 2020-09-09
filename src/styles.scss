@@ -3,6 +3,8 @@ $coloreFineSfumatura:  rgba(194, 128, 255, 1) 100%;
 body {
     background-image: linear-gradient(to right, $coloreInizioSfumatura, $coloreFineSfumatura);
     background-repeat: repeat-y;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     height: 100%;
+    // margin: 0px;
+    // padding: 0px;
 }

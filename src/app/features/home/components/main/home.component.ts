@@ -13,17 +13,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  //return the first todo using NgRx store and pipe method
-  
-  //return user using NgRx store and pipe method
-  get user(): Observable<string> {
-    return this.store.pipe(
-      select(getCurrentUser),//current user logged
-      filter(user => !!user),
-      map(user => user.name)
-    );
-  }
-
   constructor(private store: Store, private router: Router) {}
 
   logout(){
