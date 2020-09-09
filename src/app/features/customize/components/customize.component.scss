@@ -129,7 +129,7 @@
         color: lightgray
     }
 
-    a:hover {
+    ul#menu li a:hover {
         text-decoration: underline;
         color: rgb(193, 129, 255);
     }
@@ -140,6 +140,7 @@
         width: 35px;
         background-color: white;
         border: 1px solid gray;
+        cursor: pointer;
         border-radius: 50%;
         display: inline-block;
     }
@@ -151,6 +152,7 @@
         height: 35px;
         width: 35px;
         border: 1px solid gray;
+        cursor: pointer;
         background-color: black;
         border-radius: 50%;
         display: inline-block;
@@ -161,7 +163,8 @@
     .dot3 {
         margin-right: 20px;
         height: 35px;
-        width: 35px;
+        width: 35px;   
+        cursor: pointer;
         border: 1px solid gray;
         background-color: lightseagreen;
         border-radius: 50%;
@@ -175,6 +178,7 @@
         height: 35px;
         width: 35px;
         border: 1px solid gray;
+        cursor: pointer;
         background-color: greenyellow;
         border-radius: 50%;
         display: inline-block;
@@ -186,6 +190,7 @@
         margin-right: 20px;
         height: 35px;
         width: 35px;
+        cursor: pointer;
         border: 1px solid gray;
         background-color: lightblue;
         border-radius: 50%;
@@ -199,6 +204,7 @@
         height: 35px;
         width: 35px;
         border: 1px solid gray;
+        cursor: pointer;
         background-color: lightsalmon;
         border-radius: 50%;
         display: inline-block;
