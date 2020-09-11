@@ -102,13 +102,17 @@
 }
 
 .product {
-    margin-top: 100px;
-    position: absolute;
+    margin-top: 1%;
+    //position: absolute;
     height: 450px;
     width: 700px;
     background-color: white;
     //border-style: ridge;
-    margin-left: 400px;
+    //margin-left: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     box-shadow: 2px 2px black;
     border-radius: 2%;
     * {
