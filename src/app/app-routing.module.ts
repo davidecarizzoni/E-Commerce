@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'signup', loadChildren: () => import('./features/signup/signup.module').then(m => m.SignupModule) },
   { path: 'customize', loadChildren: () => import('./features/customize/customize.module').then(m => m.CustomizeModule) },
   { path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule), canLoad: [LoginGuardService] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'cart', loadChildren: () => import('./features/cart/cart.module').then(m => m.CartModule) }
 ];
 
 @NgModule({
