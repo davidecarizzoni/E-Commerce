@@ -15,11 +15,15 @@ export class HomeComponent implements OnInit {
 
   constructor(private store: Store, private router: Router) {}
 
+  id: number;
+
   logout(){
     sessionStorage.setItem("user", '');
     this.router.navigateByUrl('/login');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.id);
+  }
 
 }

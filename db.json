@@ -7,5 +7,21 @@
       "surname": "Carizzoni",
       "password": "1234"
     }
+  ],
+  "clothes": [
+    {
+      "id": 0,
+      "name": "Maglia",
+      "color": "Red",
+      "text": "Maglia ufficiale",
+      "textColor": "Black"
+    },
+    {
+      "id": 1,
+      "name": "Pantaloncini",
+      "color": "Red",
+      "text": "Pantaloncini ufficali",
+      "textColor": "Black"
+    }
   ]
 }
