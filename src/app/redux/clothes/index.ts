@@ -11,3 +11,8 @@ export const selectClothes = createSelector(
     selectClotheState,
     (state: ClothesState) => state.clothes
 )
+
+export const getClothesById = createSelector(
+    selectClotheState,
+    (state: ClothesState, props: { id: number }) => state.clothes.find(item => item.id === props.id)
+);

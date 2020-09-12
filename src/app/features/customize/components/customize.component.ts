@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { filter, switchMap } from 'rxjs/operators';
+import { Clothes } from 'src/app/core/model/clothes.interface';
+import { getClothesById } from 'src/app/redux/clothes';
 
 @Component({
   selector: 'app-customize',
@@ -7,9 +13,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomizeComponent implements OnInit {
 
-  constructor() { }
+  private subscription: Subscription = new Subscription();
+  clothes: Clothes;
+
+  constructor(private route: ActivatedRoute, private store: Store) { }
 
   ngOnInit(): void {
+    this.subscription.add(this.route.params.pipe(
+      filter(params => params != null && params['id'] != null),
+      switchMap(params => this.store.pipe(select(getClothesById, { id: Number(params['id']) }))),
+    ).subscribe(clothes => {
+      this.clothes = clothes;
+    }));
   }
 
 }
