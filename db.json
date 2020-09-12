@@ -6,6 +6,27 @@
       "name": "Davide",
       "surname": "Carizzoni",
       "password": "1234"
+    },
+    {
+      "username": "davide0tt0",
+      "surname": "",
+      "name": "",
+      "password": "12345678",
+      "id": 1
+    },
+    {
+      "username": "davideprovastore",
+      "surname": "",
+      "name": "",
+      "password": "provastore",
+      "id": 2
+    },
+    {
+      "username": "davideprovastore2",
+      "surname": "",
+      "name": "",
+      "password": "provastore2",
+      "id": 3
     }
   ],
   "clothes": [

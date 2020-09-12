@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/core/model/user.interface';
+import { insertUser } from 'src/app/redux/users/users.action';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,6 @@ export class SignupService {
     console.log("Signup service")
 
     this.authService.doSignUp(user).subscribe(()=>{"Signup ok"}, ()=>{"Signup error"})
+    this.store.dispatch(insertUser({user}));
   }
 }

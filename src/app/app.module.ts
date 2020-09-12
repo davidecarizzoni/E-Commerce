@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './redux';
 import { UsersEffect } from './redux/users/users.effects';
+import { ClothesEffects } from './redux/clothes/clothes.effects';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { UsersEffect } from './redux/users/users.effects';
     AppRoutingModule,
     CoreModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([UsersEffect]),
+    EffectsModule.forRoot([UsersEffect,ClothesEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

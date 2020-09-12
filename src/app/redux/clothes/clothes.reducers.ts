@@ -17,6 +17,7 @@ export const initialState: ClothesState = {
 export const clothesReducer = createReducer(
   initialState,
   on(initClothes, (state, {clothes}) => ({...state, clothes})),
+   //State iniziale, veriabile da passare - aggiorno lo state del clothes
 );
 
 //vera funzione di recucer - richiama la funzione sopra

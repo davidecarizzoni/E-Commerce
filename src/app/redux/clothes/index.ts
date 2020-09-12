@@ -9,9 +9,5 @@ export const selectClotheState = (state: AppState) => state.clothesState;
 //da richiamare con una get per accedere ai vestiti - /come getTodos
 export const selectClothes = createSelector(
     selectClotheState,
-    (state: ClothesState) => {
-        //stampo in console 
-        console.log(state)
-        state.clothes
-    }
+    (state: ClothesState) => state.clothes
 )
