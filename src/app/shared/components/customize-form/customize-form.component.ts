@@ -20,8 +20,6 @@ export class CustomizeFormComponent implements OnInit {
 
   clothesForm: FormGroup;
   
-
-  
   ngOnInit(): void {
     console.log(this.clothes)
     if(this.clothes != null){
@@ -35,14 +33,13 @@ export class CustomizeFormComponent implements OnInit {
     }
   }
   
-  
-  constructor(private fb: FormBuilder) {
+ constructor(private fb: FormBuilder) {
     this.clothesForm = this.fb.group({
       id:'',
-        nome: ['',Validators.required],
-        colore: ['',Validators.required],
-        testo: ['',Validators.required],
-        Ctesto: ['',Validators.required],
+      name: ['',Validators.required],
+      color: ['',Validators.required],
+      text: ['',Validators.required],
+      textColor: ['',Validators.required],
     });
   }
 

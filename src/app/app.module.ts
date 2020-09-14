@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './redux';
 import { UsersEffect } from './redux/users/users.effects';
 import { ClothesEffects } from './redux/clothes/clothes.effects';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ClothesEffects } from './redux/clothes/clothes.effects';
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
-    })
+    }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

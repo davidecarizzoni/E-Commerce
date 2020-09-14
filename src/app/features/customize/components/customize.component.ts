@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,8 @@ import { getClothesById } from 'src/app/redux/clothes';
 export class CustomizeComponent implements OnInit {
 
   private subscription: Subscription = new Subscription();
+
+  @Input()
   clothes: Clothes;
 
   constructor(private route: ActivatedRoute, private store: Store) { }
@@ -25,6 +27,14 @@ export class CustomizeComponent implements OnInit {
     ).subscribe(clothes => {
       this.clothes = clothes;
     }));
+  }
+
+  undo() {
+    this.clothes = this.clothes;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

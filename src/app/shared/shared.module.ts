@@ -19,7 +19,8 @@ import { CustomizeFormComponent } from './components/customize-form/customize-fo
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    InputTextComponent
+    InputTextComponent,
+    CustomizeFormComponent
   ]
 })
 export class SharedModule { }

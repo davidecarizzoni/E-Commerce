@@ -11,7 +11,7 @@
 </div>
 
 <div class="background">
-    <div class="product">
+    <!-- <div class="product">
         <img src="/assets/product/maglietta.jpg" class="img">
         <h5>Prodotto</h5>
         <ul id="menu">
@@ -40,5 +40,11 @@
         <div class="bottone2">
             <a class="myButton2">RIPRISTINA</a>
         </div>
-    </div>
+    </div> -->
+   <section>
+       <!-- Manca editform - Inserimento del vestito nel carrello -->
+    <app-customize-form  [clothes]="clothes" (undoEvent)="undo()"></app-customize-form>
+   </section>
+    
+
 </div>
