@@ -21,14 +21,13 @@ export class CustomizeFormComponent implements OnInit {
   clothesForm: FormGroup;
   
   ngOnInit(): void {
-    console.log(this.clothes)
     if(this.clothes != null){
       this.clothesForm = this.fb.group({
         id:this.clothes.id,
-        nome: [this.clothes.name, Validators.required],
-        colore: [this.clothes.color, Validators.required],
-        testo: [this.clothes.text, Validators.required],
-        Ctesto: [this.clothes.textColor, Validators.required],
+        name: [this.clothes.name, Validators.required],
+        color: [this.clothes.color, Validators.required],
+        text: [this.clothes.text, Validators.required],
+        textColor: [this.clothes.textColor, Validators.required],
       });
     }
   }

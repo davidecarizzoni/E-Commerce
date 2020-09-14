@@ -26,6 +26,7 @@ export class CustomizeComponent implements OnInit {
       switchMap(params => this.store.pipe(select(getClothesById, { id: Number(params['id']) }))),
     ).subscribe(clothes => {
       this.clothes = clothes;
+      console.log(this.clothes)
     }));
   }
 

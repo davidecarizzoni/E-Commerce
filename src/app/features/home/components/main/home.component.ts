@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
 
   goToCustomize(){
     console.log("Cutomize pressed -> " + this.id);
-    this.router.navigate(['/customize', this.id]);
+    this.router.navigate(['/customize', this.id-1]);
   }
 
   ngOnInit(): void {

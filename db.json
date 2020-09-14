@@ -43,6 +43,13 @@
       "color": "Red",
       "text": "Pantaloncini ufficali",
       "textColor": "Black"
+    },
+    {
+      "id": 2,
+      "name": "Felpa",
+      "color": "Red",
+      "text": "Felpa ufficali",
+      "textColor": "Black"
     }
   ]
 }
