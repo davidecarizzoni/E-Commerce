@@ -3,7 +3,7 @@
         <p class="cart"> CARRELLO </p>
         <img src="../../../assets/icone/cart.png" alt="carrello" class="carrello">
     </div>
-    <p class="title">Benvenuto nello store di Davide</p>
+    <p class="title">Benvenuto nello store di Davide!</p>
 </div>
 <div class="background">
     <div class="carousel">
@@ -11,7 +11,7 @@
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
             <!-- Passare id del vestito -->
             <div class="carousel-item" >
-                <img src="http://fakeimg.pl/2000x800/F00/fff/?text=Maglietta">
+                <img src="http://fakeimg.pl/2000x800/89ac76/fff/?text=Maglietta">
             </div>
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
             <div class="carousel-item">
@@ -21,26 +21,32 @@
             <div class="carousel-item">
                 <img src="http://fakeimg.pl/2000x800/F90/fff/?text=Felpa">
             </div>
-            <label for="carousel-3" class="carousel-control prev control-1"><span (click)="productId(3)">‹</span></label>
-            <label for="carousel-2" class="carousel-control next control-1"><span (click)="productId(2)">›</span></label>
-            <label for="carousel-1" class="carousel-control prev control-2"><span (click)="productId(1)">‹</span></label>
-            <label for="carousel-3" class="carousel-control next control-2"><span (click)="productId(3)">›</span></label>
-            <label for="carousel-2" class="carousel-control prev control-3"><span (click)="productId(2)">‹</span></label>
-            <label for="carousel-1" class="carousel-control next control-3"><span (click)="productId(1)">›</span></label>s
+            <label for="carousel-3" class="carousel-control prev control-1"><span (click)="currentClothesId(3)">‹</span></label>
+            <label for="carousel-2" class="carousel-control next control-1"><span (click)="currentClothesId(2)">›</span></label>
+            <label for="carousel-1" class="carousel-control prev control-2"><span (click)="currentClothesId(1)">‹</span></label>
+            <label for="carousel-3" class="carousel-control next control-2"><span (click)="currentClothesId(3)">›</span></label>
+            <label for="carousel-2" class="carousel-control prev control-3"><span (click)="currentClothesId(2)">‹</span></label>
+            <label for="carousel-1" class="carousel-control next control-3"><span (click)="currentClothesId(1)">›</span></label>
             <ol class="carousel-indicators">
                 <li>
-                    <label for="carousel-1" class="carousel-bullet">•</label>
+                    <label for="carousel-1" class="carousel-bullet"><span (click)="currentClothesId(1)">•</span></label>
                 </li>
                 <li>
-                    <label for="carousel-2" class="carousel-bullet">•</label>
+                    <label for="carousel-2" class="carousel-bullet"><span (click)="currentClothesId(2)">•</span></label>
                 </li>
                 <li>
-                    <label for="carousel-3" class="carousel-bullet">•</label>
+                    <label for="carousel-3" class="carousel-bullet"><span (click)="currentClothesId(3)">•</span></label>
                 </li>
             </ol>
         </div>
-        <div class="bottone" routerLink="/customize">
+        <div class="bottone" (click)="goToCustomize()">
             <a class="myButton">PERSONALIZZA ORA</a>
         </div>
     </div>  
 </div>
+
+<ng-container>
+    <section>
+
+    </section>
+</ng-container>

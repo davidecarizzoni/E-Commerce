@@ -23,18 +23,19 @@ export class HomeComponent implements OnInit {
     this.id=1;
   }
 
+  //return clothes using NgRx store
   get clothes(): Observable<Clothes[]> {
     return this.store.pipe(select(selectClothes));
   }
 
-  logout(){
-    sessionStorage.setItem("user", '');
-    this.router.navigateByUrl('/login');
-  }
-
-  productId(n:number){
+  currentClothesId(n:number){
     this.id = n;
     console.log(this.id);
+  }
+
+  goToCustomize(){
+    console.log("Cutomize pressed -> " + this.id);
+    this.router.navigate(['/customize', this.id]);
   }
 
   ngOnInit(): void {

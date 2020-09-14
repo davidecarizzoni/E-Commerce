@@ -4,9 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CustomizeComponent } from './components/customize.component';
 
 const routes: Routes = [{ 
-  path: '', component: CustomizeComponent, children: [
-    {path:'customize/:id',component:CustomizeComponent}
-  ] 
+  path: '', component: CustomizeComponent
 }];
 
 @NgModule({

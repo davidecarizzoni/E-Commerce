@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<form [formGroup]="clothesForm" (ngSubmit)="confirmChanges()" class="form">
+    <app-input-text formControlName="name" ></app-input-text>
+    <ng-container class="box">
+        <label>
+            <input type="radio" value="rosso" formControlName="color">
+              <button><i class="fa fa-circle-o" aria-hidden="true"></i></button>
+          </label>
+          <label>
+            <input type="radio" value="blue" formControlName="colore">
+            <button><i class="fa fa-circle-o" aria-hidden="true"></i></button>
+          </label>
+     <!--<app-input-text formControlName="colore" ></i></app-input-text>-->
+    </ng-container>
+    <app-input-text formControlName="text" ></app-input-text>
+    <app-input-text formControlName="textColor" ></app-input-text>
+    <button (click)="cancel()" type="button">Annulla</button>
+    <button type="submit" [disabled]="clothesForm.invalid">Conferma</button>
+</form>
+
+
