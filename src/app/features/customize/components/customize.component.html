@@ -43,7 +43,7 @@
     </div> -->
    <section>
        <!-- Manca editform - Inserimento del vestito nel carrello -->
-    <app-customize-form  [clothes]="clothes" (undoEvent)="undo()"></app-customize-form>
+    <app-customize-form  (formSubmitEvent)="editForm($event)"  [clothes]="clothes" (undoEvent)="undo()"></app-customize-form>
    </section>
     
 

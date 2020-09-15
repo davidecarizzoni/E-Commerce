@@ -4,6 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { CartItem } from 'src/app/core/model/cart-item.interface';
+import { addItemToCart } from 'src/app/redux/cart/cart.action';
 import { getClothesById } from 'src/app/redux/clothes';
 
 @Component({
@@ -28,6 +29,12 @@ export class CustomizeComponent implements OnInit {
       this.clothes = clothes;
       console.log(this.clothes)
     }));
+  }
+
+
+  editForm(cartItem: CartItem) {
+    this.store.dispatch(addItemToCart({cartItem}));
+    this.clothes = cartItem;
   }
 
   undo() {
