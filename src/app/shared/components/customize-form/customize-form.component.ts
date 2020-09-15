@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Clothes } from 'src/app/core/model/clothes.interface';
+import { CartItem } from 'src/app/core/model/cart-item.interface';
 
 @Component({
   selector: 'app-customize-form',
@@ -10,13 +10,13 @@ import { Clothes } from 'src/app/core/model/clothes.interface';
 export class CustomizeFormComponent implements OnInit {
 
   @Input()
-  clothes: Clothes;
+  clothes: CartItem;
 
   @Output()
-  formSubmitEvent: EventEmitter<Clothes> = new EventEmitter();
+  formSubmitEvent: EventEmitter<CartItem> = new EventEmitter();
 
   @Output()
-  undoEvent: EventEmitter<Clothes> = new EventEmitter();
+  undoEvent: EventEmitter<CartItem> = new EventEmitter();
 
   clothesForm: FormGroup;
   

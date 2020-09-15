@@ -1,10 +1,10 @@
 import {Action, createReducer, on} from '@ngrx/store';
-import { Clothes } from 'src/app/core/model/clothes.interface';
+import { CartItem } from 'src/app/core/model/cart-item.interface';
 import { initClothes } from './clothes.action';
 
 //definizione state
 export interface ClothesState {
-  clothes: Clothes[];
+  clothes: CartItem[];
 }
 
 //definizione stato iniziale dello state

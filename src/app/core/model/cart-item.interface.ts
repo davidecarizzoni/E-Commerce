@@ -1,4 +1,4 @@
-export interface Clothes{
+export interface CartItem{
     id: number;
     name: string;
     color: string;

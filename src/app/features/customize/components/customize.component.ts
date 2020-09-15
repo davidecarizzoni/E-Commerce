@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { Clothes } from 'src/app/core/model/clothes.interface';
+import { CartItem } from 'src/app/core/model/cart-item.interface';
 import { getClothesById } from 'src/app/redux/clothes';
 
 @Component({
@@ -16,7 +16,7 @@ export class CustomizeComponent implements OnInit {
   private subscription: Subscription = new Subscription();
 
   @Input()
-  clothes: Clothes;
+  clothes: CartItem;
 
   constructor(private route: ActivatedRoute, private store: Store) { }
 

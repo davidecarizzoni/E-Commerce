@@ -4,10 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { map, filter } from 'rxjs/operators';
 import { getCurrentUser } from 'src/app/redux/users';
 import { Router } from '@angular/router';
-import { Clothes } from 'src/app/core/model/clothes.interface';
 import { selectClothes } from 'src/app/redux/clothes';
 import { retrieveAllClothes } from 'src/app/redux/clothes/clothes.action';
 import { retrieveAllUsers } from 'src/app/redux/users/users.action';
+import { CartItem } from 'src/app/core/model/cart-item.interface';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   //return clothes using NgRx store
-  get clothes(): Observable<Clothes[]> {
+  get clothes(): Observable<CartItem[]> {
     return this.store.pipe(select(selectClothes));
   }
 

@@ -1,7 +1,7 @@
 import {createAction, props} from '@ngrx/store';
-import {Clothes} from '../../core/model/clothes.interface';
+import {CartItem} from '../../core/model/cart-item.interface';
 
-export const initClothes = createAction('[Clothe] init clothes',  props<{clothes: Clothes[]}>());
+export const initClothes = createAction('[Clothe] init clothes',  props<{clothes: CartItem[]}>());
 
 //effects
 export const retrieveAllClothes = createAction('[Clothes] effect - Retrieve all');
