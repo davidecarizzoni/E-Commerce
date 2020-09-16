@@ -33,6 +33,7 @@
     {
       "id": 0,
       "name": "Maglia",
+      "imgPath": "/assets/product/maglietta.jpg",
       "color": "Red",
       "text": "Maglia ufficiale",
       "textColor": "Black"
@@ -40,6 +41,7 @@
     {
       "id": 1,
       "name": "Pantaloncini",
+      "imgPath": "/assets/product/pantaloncini.jpg",
       "color": "Red",
       "text": "Pantaloncini ufficali",
       "textColor": "Black"
@@ -47,6 +49,7 @@
     {
       "id": 2,
       "name": "Felpa",
+      "imgPath": "/assets/product/felpa-liverpool.jpg",
       "color": "Red",
       "text": "Felpa ufficali",
       "textColor": "Black"

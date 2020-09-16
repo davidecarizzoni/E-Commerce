@@ -4,10 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { map, filter } from 'rxjs/operators';
 import { getCurrentUser } from 'src/app/redux/users';
 import { Router } from '@angular/router';
-import { selectClothes } from 'src/app/redux/clothes';
-import { retrieveAllClothes } from 'src/app/redux/clothes/clothes.action';
 import { retrieveAllUsers } from 'src/app/redux/users/users.action';
 import { CartItem } from 'src/app/core/model/cart-item.interface';
+import { selectClothes } from 'src/app/redux/clothes';
 
 
 @Component({

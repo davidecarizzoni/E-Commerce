@@ -11,40 +11,7 @@
 </div>
 
 <div class="background">
-    <!-- <div class="product">
-        <img src="/assets/product/maglietta.jpg" class="img">
-        <h5>Prodotto</h5>
-        <ul id="menu">
-            <li><a href="#">Maglia</a></li>
-            <li><a href="#">Pantaloncini</a></li>
-            <li><a href="#">Felpa</a></li>
-            <li><a href="#">Tuta</a></li>
-        </ul>
-        <h5>Colore articolo</h5>
-        <span class="dot1"></span>
-        <span class="dot2"></span>
-        <span class="dot3"></span>
-        <span class="dot4"></span>
-        <span class="dot5"></span>
-        <span class="dot6"></span>
-        <h5>Testo personalizzato</h5>
-        <form>
-            <input type="text" id="testo" name="testo" placeholder="Inserisci testo">
-        </form>
-        <h5>Colore testo</h5>
-        <span class="dot1"></span>
-        <span class="dot2"></span>
-        <div class="bottone">
-            <a class="myButton">AGGIUNGI AL CARRELLO</a>
-        </div>
-        <div class="bottone2">
-            <a class="myButton2">RIPRISTINA</a>
-        </div>
-    </div> -->
    <section>
-       <!-- Manca editform - Inserimento del vestito nel carrello -->
-    <app-customize-form  (formSubmitEvent)="editForm($event)"  [clothes]="clothes" (undoEvent)="undo()"></app-customize-form>
+        <app-customize-form  (formSubmitEvent)="editForm($event)"  [clothes]="clothes" (undoEvent)="undo()"></app-customize-form>
    </section>
-    
-
 </div>

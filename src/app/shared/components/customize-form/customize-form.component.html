@@ -1,56 +1,73 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-
-<form [formGroup]="clothesForm" (ngSubmit)="confirmChanges()" class="form">
-    <app-input-text formControlName="name" ></app-input-text>
-    <ng-container class="box">
-        <label>
-            <input type="radio" value="rosso" formControlName="color">
-              <button><i class="fa fa-circle-o" aria-hidden="true"></i></button>
-          </label>
-          <label>
-            <input type="radio" value="blue" formControlName="color">
-            <button><i class="fa fa-circle-o" aria-hidden="true"></i></button>
-          </label>
-    </ng-container>
-    <app-input-text formControlName="text" ></app-input-text>
-    <app-input-text formControlName="textColor" ></app-input-text>
-    <button (click)="cancel()" type="button">Annulla</button>
-    <button type="submit" [disabled]="clothesForm.invalid">Conferma</button>
-</form>
-
-
+<!-- Ok, da sistemare cambio colore della maglia. Per il resto OK -->
 <div class="background">
     <div class="product">
-      <form>
-        <img src="/assets/product/maglietta.jpg" class="img">
-        <h5>Prodotto</h5>
-        <ul id="menu">
-            <li><a href="#">Maglia</a></li>
-            <li><a href="#">Pantaloncini</a></li>
-            <li><a href="#">Felpa</a></li>
-            <li><a href="#">Tuta</a></li>
-        </ul>
-        <h5>Colore articolo</h5>
-        <span class="dot1"></span>
-        <span class="dot2"></span>
-        <span class="dot3"></span>
-        <span class="dot4"></span>
-        <span class="dot5"></span>
-        <span class="dot6"></span>
-        <h5>Testo personalizzato</h5>
-        
-            <input type="text" id="testo" name="testo" placeholder="Inserisci testo">
-       
-        <h5>Colore testo</h5>
-        <span class="dot1"></span>
-        <span class="dot2"></span>
-        <div class="bottone">
-            <a class="myButton">AGGIUNGI AL CARRELLO</a>
-        </div>
-        <div class="bottone2">
-            <a class="myButton2">RIPRISTINA</a>
-        </div>
-      </form>
-    </div> 
+        <form [formGroup]="clothesForm" (ngSubmit)="confirmChanges()">
+
+            <img src="{{clothes.imgPath}}" class="img">
+
+            <div class="content">
+                <!-- Name -->
+                <div class="text">
+                    <input type="text" class="name" formControlName="name" >
+                </div>
+               
+            
+                <!-- Color -->
+                    <label class="container">
+                        <input type="radio" value="white" formControlName="color">
+                        <span class="checkmark-white"></span>
+                    </label>
+
+                    <label class="container">
+                        <input type="radio" value="black" formControlName="color">
+                        <span class="checkmark-black"></span>
+                    </label>
+
+                    <label class="container">
+                        <input type="radio" value="green" formControlName="color">
+                        <span class="checkmark-green"></span>
+                    </label>
+
+                    <label class="container">
+                        <input type="radio" value="orange" formControlName="color">
+                        <span class="checkmark-orange"></span>
+                    </label>
+    
+                <!-- Text -->
+                <div class="text">
+                    <input type="text" class="name" formControlName="text" >
+                </div>
+                
+            
+                <!-- Text color -->
+                <label class="container">
+                    <input type="radio" value="white" formControlName="textColor">
+                    <span class="checkmark-white"></span>
+                </label>
+
+                <label class="container">
+                    <input type="radio" value="black" formControlName="textColor">
+                    <span class="checkmark-black"></span>
+                </label> <br>
+                
+                <!-- Button confirmation -->
+                <!-- <button (click)="cancel()" type="button">Annulla</button> -->
+                <!-- <button type="submit" [disabled]="clothesForm.invalid">Conferma</button> -->
+
+                <div class="div-button">
+                    <div class="bottone">
+                        <!-- <a class="myButton">AGGIUNGI AL CARRELLO</a> -->
+                        <button class="myButton" type="submit" [disabled]="clothesForm.invalid">VAI AL CARRELLO</button>
+                    </div>
+                    <div class="bottone2">
+                        <!-- <a class="myButton2">RIPRISTINA</a> -->
+                        <button class="myButton2" (click)="cancel()" type="button">RIPRISTINA</button>
+                    </div>
+                </div>
+            </div>
+           
+        </form>
+    </div>
 </div>

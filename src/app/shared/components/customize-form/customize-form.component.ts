@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CartItem } from 'src/app/core/model/cart-item.interface';
 
 @Component({
@@ -22,6 +23,7 @@ export class CustomizeFormComponent implements OnInit {
   
   ngOnInit(): void {
     if(this.clothes != null){
+      console.log("Customize form components - " + this.clothes)
       this.clothesForm = this.fb.group({
         id:this.clothes.id,
         name: [this.clothes.name, Validators.required],
@@ -32,7 +34,7 @@ export class CustomizeFormComponent implements OnInit {
     }
   }
   
- constructor(private fb: FormBuilder) {
+ constructor(private fb: FormBuilder, private router: Router) {
     this.clothesForm = this.fb.group({
       id:'',
       name: ['',Validators.required],
@@ -40,6 +42,11 @@ export class CustomizeFormComponent implements OnInit {
       text: ['',Validators.required],
       textColor: ['',Validators.required],
     });
+  }
+
+  goToCustomize(id: number){
+    console.log("Cutomize pressed -> " + id);
+    this.router.navigate(['/customize', id-1]);
   }
 
   confirmChanges() {

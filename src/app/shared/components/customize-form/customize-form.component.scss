@@ -5,6 +5,9 @@
     height: 130px;
     background-image: linear-gradient(90deg, rgba(129, 210, 248, 1), rgba(193, 129, 255, 1) 100%);
 }
+.content{
+    padding-top: 50px;
+}
 
 .product {
     margin-top: 1%;
@@ -24,13 +27,32 @@
         font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     }
     .img {
-        padding: 20px;
+        padding-top: 50px;
+        padding-left: 20px;
         height: 340px;
         width: 250px;
         float: left;
     }
+
+    input[type=text] {
+        width: 350px;
+        padding: 10px;
+        border: none;
+        background-color: rgb(240, 240, 240);
+        color: gray;
+    }
+
+    .text{
+        padding-top:20px;
+    }
+
+    //MENU ITEMS
+
+    .menu{
+        padding-top:20px;
+    }
     ul#menu li {
-        display: inline-block;
+        display: inline;
         padding: 20px;
     }
     a {
@@ -38,12 +60,31 @@
         color: lightgray
     }
 
-    ul#menu li a:hover {
-        text-decoration: underline;
-        color: rgb(193, 129, 255);
-    }
+    
 
-    .dot1 {
+    //LABEL COLOR
+    .container {
+        display: inline-block;
+        position: relative;
+        padding-left: 35px;
+        padding-top: 20px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* Hide the browser's default radio button */
+      .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+      
+      .checkmark-white {
         margin-right: 18px;
         height: 35px;
         width: 35px;
@@ -52,24 +93,20 @@
         cursor: pointer;
         border-radius: 50%;
         display: inline-block;
-    }
-    .dot1:hover{
-        border:1px solid rgb(193, 129, 255);
-    }
-    .dot2 {
-        margin-right: 20px;
+      }
+
+      .checkmark-black {
+        margin-right: 18px;
         height: 35px;
         width: 35px;
+        background-color: black;
         border: 1px solid gray;
         cursor: pointer;
-        background-color: black;
         border-radius: 50%;
         display: inline-block;
-    }
-    .dot2:hover{
-        border:1px solid rgb(193, 129, 255);
-    }
-    .dot3 {
+      }
+
+      .checkmark-green {
         margin-right: 20px;
         height: 35px;
         width: 35px;   
@@ -78,58 +115,68 @@
         background-color: lightseagreen;
         border-radius: 50%;
         display: inline-block;
-    }
-    .dot3:hover{
-        border:1px solid rgb(193, 129, 255);
-    }
-    .dot4 {
-        margin-right: 20px;
+      }
+
+      .checkmark-orange {
+        margin-right: 18px;
         height: 35px;
         width: 35px;
-        border: 1px solid gray;
-        cursor: pointer;
-        background-color: greenyellow;
-        border-radius: 50%;
-        display: inline-block;
-    }
-    .dot4:hover{
-        border:1px solid rgb(193, 129, 255);
-    }
-    .dot5 {
-        margin-right: 20px;
-        height: 35px;
-        width: 35px;
-        cursor: pointer;
-        border: 1px solid gray;
-        background-color: lightblue;
-        border-radius: 50%;
-        display: inline-block;
-    }
-    .dot5:hover{
-        border:1px solid rgb(193, 129, 255);
-    }
-    .dot6 {
-        margin-right: 20px;
-        height: 35px;
-        width: 35px;
-        border: 1px solid gray;
-        cursor: pointer;
         background-color: lightsalmon;
+        border: 1px solid gray;
+        cursor: pointer;
         border-radius: 50%;
         display: inline-block;
-    }
-    .dot6:hover{
+      }
+      
+      .container input:checked ~ .checkmark-white {
         border:1px solid rgb(193, 129, 255);
+        }
+      }
+
+      .container input:checked ~ .checkmark-black {
+        border:1px solid rgb(193, 129, 255);
+      }
+
+      .container input:checked ~ .checkmark-orange {
+        border:1px solid rgb(193, 129, 255);
+      }
+
+      .container input:checked ~ .checkmark-green {
+        border:1px solid rgb(193, 129, 255);
+      }
+      
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      
+      .container input:checked ~ .checkmark:after {
+        display: block;
+      }
+      
+      .container .checkmark:after {
+          top: 9px;
+          left: 9px;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: white;
+      }
+
+
+      
+
+
+     //BUTTON
+    .div-button{
+        padding-right: 25px;
     }
-    input[type=text] {
-        width: 300px;
-        padding: 10px;
-        border: none;
-        background-color: rgb(240, 240, 240);
-        color: gray;
-    }
+
     .bottone {
+        right: 2px;
         padding: 15px;
+        margin-right: 20px;
         padding-top: 25px;
         float: right;
         position: relative;
@@ -137,6 +184,7 @@
     .myButton {
         background-color: rgb(193, 129, 255);
         border-radius: 3px;
+        border: none;
         display: inline-block;
         cursor: pointer;
         color: #ffffff;
@@ -152,9 +200,10 @@
         top: 1px;
     }
     .bottone2 {
+        padding-top:25px;
         padding-left: 15px;
         padding-bottom: 20px;
-        top: -16px;
+        // top: 30px;
         float: left;
         position: relative;
     }
@@ -178,4 +227,3 @@
         position: relative;
         top: 1px;
     }
-}

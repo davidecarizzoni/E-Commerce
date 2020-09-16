@@ -7,6 +7,7 @@ import { CartItem } from 'src/app/core/model/cart-item.interface';
 import { addItemToCart } from 'src/app/redux/cart/cart.action';
 import { getClothesById } from 'src/app/redux/clothes';
 
+
 @Component({
   selector: 'app-customize',
   templateUrl: './customize.component.html',
