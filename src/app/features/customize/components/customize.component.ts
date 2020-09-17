@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
@@ -20,7 +20,7 @@ export class CustomizeComponent implements OnInit {
   @Input()
   clothes: CartItem;
 
-  constructor(private route: ActivatedRoute, private store: Store) { }
+  constructor(private route: ActivatedRoute, private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.subscription.add(this.route.params.pipe(
@@ -34,7 +34,10 @@ export class CustomizeComponent implements OnInit {
 
 
   editForm(cartItem: CartItem) {
+    //Gli passo il path dell'immagine - salva nel carrello anche il path
+    cartItem.imgPath = this.clothes.imgPath;
     this.store.dispatch(addItemToCart({cartItem}));
+    this.router.navigateByUrl('/cart');
     this.clothes = cartItem;
   }
 
