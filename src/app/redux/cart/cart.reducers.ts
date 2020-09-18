@@ -15,6 +15,5 @@ export const cartReducers = createReducer(
     initialState,
     on(initCart, (state, {cart}) => ({...state, cart})),
     on(addItemToCart, (state, {cartItem}) => ({ ...state, cart: [...state.cart, cartItem] })),
-    //Correct?
     on(removeItemToCartById, (state, {id}) => ({ ...state, cart: state.cart.filter(item => item.id !== id) })),
 )

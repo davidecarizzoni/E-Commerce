@@ -3,7 +3,16 @@
         <img src="../../../assets/icone/home.png" alt="home" class="house">
         <p class="scritta">Home</p>
     </div>
-    <p class="title">Carrello</p>
+    <ng-container>
+        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)"> 
+            <p class="title">Carrello ({{ (cartItem | async).length}})</p>  
+        </ng-container>
+        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)">
+            <p class="title">Carrello Vuoto</p>
+        </ng-container >
+    </ng-container>
+  
+   
 </div>
 <div class="background">
 
@@ -39,7 +48,7 @@
             </ng-container>
 
             <ng-template #emptyCart>
-                <h1>Carrello vuoto</h1>
+                <h1 class="emptyCart">Carrello vuoto</h1>
             </ng-template>
             <hr>
             <div class="footer">
