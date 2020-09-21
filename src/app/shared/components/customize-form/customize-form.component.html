@@ -3,14 +3,14 @@
 <!-- Ok, da sistemare cambio colore della maglia. Per il resto OK -->
 <div class="background">
     <div class="product">
-        <form [formGroup]="clothesForm" (ngSubmit)="confirmChanges()">
+        <form [formGroup]="clothesForm" (ngSubmit)="confirmChanges()" ngNativeValidate>
 
             <img src="{{clothes.imgPath}}" class="img">
 
             <div class="content">
                 <!-- Name -->
                 <div class="text">
-                    <input type="text" class="name" formControlName="name" >
+                    <p> {{clothes.name}} </p>
                 </div>
                
             
@@ -37,7 +37,7 @@
     
                 <!-- Text -->
                 <div class="text">
-                    <input type="text" class="name" formControlName="text" >
+                    <input type="text" class="name" formControlName="text" placeholder="Testo personalizzato" required> 
                 </div>
                 
             
@@ -59,7 +59,7 @@
                 <div class="div-button">
                     <div class="bottone">
                         <!-- <a class="myButton">AGGIUNGI AL CARRELLO</a> -->
-                        <button class="myButton" type="submit" [disabled]="clothesForm.invalid">VAI AL CARRELLO</button>
+                        <button class="myButton" type="submit" >VAI AL CARRELLO</button>
                     </div>
                     <div class="bottone2">
                         <!-- <a class="myButton2">RIPRISTINA</a> -->

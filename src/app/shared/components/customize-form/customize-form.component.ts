@@ -54,7 +54,8 @@ export class CustomizeFormComponent implements OnInit {
   }
 
   cancel() {
-    this.undoEvent.emit(this.clothesForm.value);
+    //this.undoEvent.emit(this.clothesForm.value);
+    this.clothesForm.reset();
   }
 
 }
