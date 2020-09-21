@@ -23,7 +23,6 @@ export class CustomizeFormComponent implements OnInit {
   
   ngOnInit(): void {
     if(this.clothes != null){
-      console.log("Customize form components - " + this.clothes)
       this.clothesForm = this.fb.group({
         id:this.clothes.id,
         name: [this.clothes.name, Validators.required],
@@ -37,7 +36,6 @@ export class CustomizeFormComponent implements OnInit {
  constructor(private fb: FormBuilder, private router: Router) {
     this.clothesForm = this.fb.group({
       id:'',
-      name: ['',Validators.required],
       color: ['',Validators.required],
       text: ['',Validators.required],
       textColor: ['',Validators.required],
@@ -45,7 +43,7 @@ export class CustomizeFormComponent implements OnInit {
   }
 
   goToCustomize(id: number){
-    console.log("Cutomize pressed -> " + id);
+    //console.log("Cutomize pressed -> " + id);
     this.router.navigate(['/customize', id-1]);
   }
 
@@ -54,8 +52,8 @@ export class CustomizeFormComponent implements OnInit {
   }
 
   cancel() {
-    //this.undoEvent.emit(this.clothesForm.value);
     this.clothesForm.reset();
+    this.ngOnInit();
   }
 
 }
