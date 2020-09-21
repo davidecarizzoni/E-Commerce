@@ -41,7 +41,7 @@
                             <p>{{item.textColor}}</p>    
                         </div>
                         <div class="bottone2">
-                            <a class="myButton2">RIMUOVI</a>
+                            <a class="myButton2" (click)="remove(item.id)">RIMUOVI</a>
                         </div>
                     </div>
                 </ng-container>
@@ -67,40 +67,40 @@
 
         <!-- FORM - STEP 2 -->
         <div class="step2" *ngSwitchCase="1">
-            <form>
+            <form [formGroup]="shippingForm"  (ngSubmit)="next();submitForm()" ngNativeValidate>
                 <div>
                     <label for="nome" class="label">Nome</label>
-                    <input type="text" id="nome" class="form">
+                    <input type="text" id="nome" class="form" formControlName="nome" required>
                 </div>
                 <div>
                     <label for="nome" class="label">Cognome</label>
-                    <input type="text" id="nome" class="form">
+                    <input type="text" id="nome" class="form" formControlName="cognome" required>
                 </div>
                 <div>
                     <label for="nome" class="label">Cellulare</label>
-                    <input type="text" id="nome" class="form">
+                    <input type="text" id="nome" class="form" formControlName="cellulare" required>
                 </div>
                 <div class="inline">
                     <label for="nome" class="label">Citta</label>
-                    <input type="text" id="nome" class="form2">
+                    <input type="text" id="nome" class="form2" formControlName="città" required>
                     <label for="nome" class="label">Cap</label>
-                    <input type="text" id="nome" class="form2">
+                    <input type="text" id="nome" class="form2" formControlName="cap" maxlength="5" required>
                 </div>
                 <div>
                     <label for="nome" class="label">Indirizzo</label>
-                    <input type="text" id="nome" class="form3">
+                    <input type="text" id="nome" class="form3" formControlName="indirizzo" required>
                     <label for="nome" class="label">N</label>
-                    <input type="text" id="nome" class="form4">
+                    <input type="text" id="nome" class="form4" formControlName="n" required>
                 </div>
                 <div>
                     <label for="nome" class="label">Informazioni per corriere</label>
-                    <input type="text" id="nome" class="form">
+                    <input type="text" id="nome" class="form" formControlName="information" required maxlength="50">
                 </div>
             </form>
             <hr>
             <div class="footer">
                 <div class="bottone4">
-                    <a class="myButton4" (click)="back()">INDIETRO</a>
+                    <a class="myButton4" (click)="back()"> INDIETRO </a>
                 </div>
                 <div class="dots2">
                     <span class="dot2"></span>
@@ -108,7 +108,7 @@
                     <span class="dot3"></span>
                 </div>
                 <div class="bottone5">
-                    <a class="myButton5" (click)="next()">PROSEGUI</a>
+                    <a type="submit" class="myButton5"> PROSEGUI </a>
                 </div>
             </div>
         </div>
@@ -131,22 +131,29 @@
                     <p>nulla</p>
                 </div>
             </div>
-            <form>
+            <form [formGroup]="paymentForm">
                 <div>
                     <label for="nome" class="label">Seleziona metodo di pagamento</label>
-                    <select name="nome" id="nome" class="form">
-                            <option value="carta" class="option">Carta di credito</option>
-                        </select>
+                    <select name="nome" id="nome" class="form" formControlName="carta">
+                            <option value="cartaCredito" class="option">Carta di credito</option>
+                            <option value="cartaDebito" class="option">Carta di debito</option>
+                            <option value="cartaPrepagata" class="option">Carta prepagata</option>
+                    </select>
                 </div>
                 <div>
                     <label for="nome" class="label">Tipo carta</label>
                     <input type="text" id="nome" class="form">
+                    <select name="nome" id="nome" class="form" formControlName="tipo">
+                        <option value="Visa" class="option">Visa</option>
+                        <option value="MasterCard" class="option">MasterCard</option>
+                        <option value="Maestro" class="option">Maestro</option>
+                    </select>
                 </div>
                 <div>
                     <label for="nome" class="label">Numero carta</label>
-                    <input type="text" id="nome" class="form5">
+                    <input id="nome" class="form5" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="numero">
                     <label for="nome" class="label">CVC</label>
-                    <input type="text" id="nome" class="form6">
+                    <input type="text" id="nome" class="form6" formControlName="CVC">
                 </div>
             </form>
             <hr>
