@@ -67,7 +67,7 @@
 
         <!-- FORM - STEP 2 -->
         <div class="step2" *ngSwitchCase="1">
-            <form [formGroup]="shippingForm"  (ngSubmit)="next();submitForm()" ngNativeValidate>
+            <form [formGroup]="shippingForm" (ngSubmit)="next();submitForm()" ngNativeValidate>
                 <div>
                     <label for="nome" class="label">Nome</label>
                     <input type="text" id="nome" class="form" formControlName="nome" required>
@@ -96,21 +96,22 @@
                     <label for="nome" class="label">Informazioni per corriere</label>
                     <input type="text" id="nome" class="form" formControlName="information" required maxlength="50">
                 </div>
+                <hr>
+                <div class="footer">
+                    <div class="bottone4">
+                        <a class="myButton4" (click)="back()"> INDIETRO </a>
+                    </div>
+                    <div class="dots2">
+                        <span class="dot2"></span>
+                        <span class="dot1"></span>
+                        <span class="dot3"></span>
+                    </div>
+                    <div class="bottone5">
+                        <button type="submit" class="myButton5"> PROSEGUI </button>
+                    </div>
+                </div>
             </form>
-            <hr>
-            <div class="footer">
-                <div class="bottone4">
-                    <a class="myButton4" (click)="back()"> INDIETRO </a>
-                </div>
-                <div class="dots2">
-                    <span class="dot2"></span>
-                    <span class="dot1"></span>
-                    <span class="dot3"></span>
-                </div>
-                <div class="bottone5">
-                    <a type="submit" class="myButton5"> PROSEGUI </a>
-                </div>
-            </div>
+           
         </div>
 
         <!-- PAGAMENTO - STEP 2 -->
