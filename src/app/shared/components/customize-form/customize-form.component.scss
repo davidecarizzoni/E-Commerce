@@ -32,6 +32,7 @@
         height: 340px;
         width: 250px;
         float: left;
+        margin-right: 12px;
     }
 
     input[type=text] {
@@ -47,7 +48,6 @@
     }
 
     //MENU ITEMS
-
     .menu{
         padding-top:20px;
     }
@@ -84,11 +84,33 @@
         cursor: pointer;
       }
       
+      .checkmark-red {
+        margin-right: 18px;
+        height: 35px;
+        width: 35px;
+        background-color: rgb(240,84,93);
+        border: 1px solid gray;
+        cursor: pointer;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
       .checkmark-white {
         margin-right: 18px;
         height: 35px;
         width: 35px;
-        background-color: white;
+        background-color:white;
+        border: 1px solid gray;
+        cursor: pointer;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .checkmark-gray {
+        margin-right: 18px;
+        height: 35px;
+        width: 35px;
+        background-color:rgb(172,169,172);
         border: 1px solid gray;
         cursor: pointer;
         border-radius: 50%;
@@ -121,7 +143,7 @@
         margin-right: 18px;
         height: 35px;
         width: 35px;
-        background-color: lightsalmon;
+        background-color: rgb(230,174,31);
         border: 1px solid gray;
         cursor: pointer;
         border-radius: 50%;

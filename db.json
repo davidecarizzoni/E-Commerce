@@ -12,26 +12,26 @@
     {
       "id": 0,
       "name": "Maglietta",
-      "imgPath": "/assets/product/maglietta.jpg",
-      "color": "Black",
+      "imgPath": "/assets/product/maglietta_black.jpg",
+      "color": "black",
       "text": "",
-      "textColor": "White"
+      "textColor": "white"
     },
     {
       "id": 1,
       "name": "Pantaloncini",
-      "imgPath": "/assets/product/pantaloncini.jpg",
-      "color": "Black",
+      "imgPath": "/assets/product/pantaloncini_black.jpg",
+      "color": "black",
       "text": "",
-      "textColor": "White"
+      "textColor": "white"
     },
     {
       "id": 2,
       "name": "Felpa",
-      "imgPath": "/assets/product/felpa-liverpool.jpg",
-      "color": "Black",
+      "imgPath": "/assets/product/felpa_black.jpg",
+      "color": "black",
       "text": "",
-      "textColor": "White"
+      "textColor": "white"
     }
   ]
 }

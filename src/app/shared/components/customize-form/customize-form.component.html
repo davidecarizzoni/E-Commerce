@@ -5,7 +5,7 @@
     <div class="product">
         <form [formGroup]="clothesForm" (ngSubmit)="confirmChanges()" ngNativeValidate>
 
-            <img src="{{clothes.imgPath}}" class="img">
+            <img src="{{imgPath}}" class="img">
 
             <div class="content">
                 <!-- Name -->
@@ -16,23 +16,23 @@
             
                 <!-- Color -->
                     <label class="container">
-                        <input type="radio" value="white" formControlName="color">
-                        <span class="checkmark-white"></span>
+                        <input type="radio" value="red" formControlName="color" >
+                        <span class="checkmark-red" (click)="changeColor('red')"></span>
                     </label>
 
                     <label class="container">
                         <input type="radio" value="black" formControlName="color">
-                        <span class="checkmark-black"></span>
+                        <span class="checkmark-black" (click)="changeColor('black')"></span>
                     </label>
 
                     <label class="container">
                         <input type="radio" value="green" formControlName="color">
-                        <span class="checkmark-green"></span>
+                        <span class="checkmark-gray" (click)="changeColor('grey')"></span>
                     </label>
 
                     <label class="container">
                         <input type="radio" value="orange" formControlName="color">
-                        <span class="checkmark-orange"></span>
+                        <span class="checkmark-orange" (click)="changeColor('orange')"></span>
                     </label>
     
                 <!-- Text -->
