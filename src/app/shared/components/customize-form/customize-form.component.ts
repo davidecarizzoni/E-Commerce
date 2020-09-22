@@ -30,7 +30,7 @@ export class CustomizeFormComponent implements OnInit {
       this.imgPath= this.clothes.imgPath
       this.clothesForm = this.fb.group({
         id: this.clothes.id,
-        imgPath: [this.clothes.imgPath],
+        imgPath: this.changeColor(this.clothes.color),
         name: [this.clothes.name, Validators.required],
         color: [this.clothes.color, Validators.required],
         text: [this.clothes.text, Validators.required],
@@ -42,6 +42,7 @@ export class CustomizeFormComponent implements OnInit {
  constructor(private fb: FormBuilder, private router: Router) {
     this.clothesForm = this.fb.group({
       id:'',
+      imgPath:'',
       color: ['',Validators.required],
       text: ['',Validators.required],
       textColor: ['',Validators.required],
@@ -54,7 +55,24 @@ export class CustomizeFormComponent implements OnInit {
   }
 
   changeColor(color: string){
-    this.imgPath = "/assets/product/maglietta_" + color + ".jpg";
+    // if(this.clothes.id == 0){
+    //   this.imgPath = "/assets/product/maglietta_" + color + ".jpg";
+    //   this.clothesForm.controls['imgPath'].setValue({imgPath : this.imgPath})
+    //   //this.clothesForm.get('imgPath').setValue(this.imgPath);
+    // }
+
+    // else if(this.clothes.id == 1){
+    //   this.clothesForm.controls['imgPath'].setValue({imgPath : this.imgPath})
+    //   this.imgPath = "/assets/product/pantaloncini_" + color + ".jpg";
+    // }
+     
+    // else if(this.clothes.id == 2){
+    //   this.imgPath = "/assets/product/felpa_" + color + ".jpg";
+    //   this.clothesForm.controls['imgPath'].setValue({imgPath : this.imgPath})
+    // }
+
+    this.imgPath = "/assets/product/" + this.clothes.id + "_" + color + ".jpg";
+     
   }
 
   confirmChanges() {

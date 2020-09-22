@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -14,8 +15,15 @@ import { removeItemToCartById } from 'src/app/redux/cart/cart.action';
 export class CartComponent implements OnInit {
 
   prosegui: number;
+  imgPath: string;
   shippingForm: FormGroup;
   paymentForm: FormGroup;
+
+  @Input() img: string;
+
+  get cartItem(): Observable<CartItem[]> {
+    return this.store.pipe(select(getCartItem));
+  }
 
   constructor(private store: Store, private fb:FormBuilder) { 
     this.shippingForm = this.fb.group({
@@ -35,12 +43,7 @@ export class CartComponent implements OnInit {
       numero: ['', Validators.required],
       CVC: ['', Validators.required]
     })
-  }
 
-  get cartItem(): Observable<CartItem[]> {
-    return this.store.pipe(
-      //tap(items => console.log(JSON.stringify(items))),
-      select(getCartItem));
   }
 
 
@@ -64,6 +67,24 @@ export class CartComponent implements OnInit {
 
   submitForm(){
     console.log(this.shippingForm.value)
+  }
+
+  getImagePath(id: number, color: string){
+    switch(id){
+      case 0:
+        console.log(color);
+        this.imgPath =  "/assets/product/maglietta_" + color + ".jpg";
+        console.log("case 0" + this.imgPath);
+        break;
+      case 1:
+        this.imgPath =  "/assets/product/pantaloncini_" + color + ".jpg";
+        console.log("case 1");
+        break;
+      case 2:
+        this.imgPath =  "/assets/product/felpa" + color + ".jpg";
+        console.log("case 2");
+        break;
+      }
   }
 
 }

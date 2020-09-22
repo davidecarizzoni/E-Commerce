@@ -26,7 +26,7 @@
             <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0); else emptyCart">
                 <ng-container *ngFor="let item of cartItem | async">
                     <div class="cartItem">
-                        <img src="{{item.imgPath}}" class="img" alt="img_prodotto">
+                        <img [src]="'/assets/product/'+item.id+'_'+item.color+'.jpg'" class="img" alt="img_prodotto">
                         <p class="costo">€ 15</p>
                         <div class="resoconto">
                             <p>Prodotto</p>
