@@ -24,10 +24,9 @@ export class CustomizeFormComponent implements OnInit {
   
   ngOnInit(): void {
     if(this.clothes != null){
-      this.imgPath= this.clothes.imgPath
+      this.setPathImage(this.clothes.color);
       this.clothesForm = this.fb.group({
         id: this.clothes.id,
-        imgPath: this.changeColor(this.clothes.color),
         name: [this.clothes.name, Validators.required],
         color: [this.clothes.color, Validators.required],
         text: [this.clothes.text, Validators.required],
@@ -40,18 +39,13 @@ export class CustomizeFormComponent implements OnInit {
  constructor(private fb: FormBuilder, private router: Router) {
     this.clothesForm = this.fb.group({
       id:'',
-      imgPath:'',
       color: ['',Validators.required],
       text: ['',Validators.required],
       textColor: ['',Validators.required],
     });
   }
 
-  goToCustomize(id: number){
-    this.router.navigate(['/customize', id-1]);
-  }
-
-  changeColor(color: string){
+  setPathImage(color: string){
     this.imgPath = "/assets/product/" + this.clothes.id + "_" + color + ".jpg";
   }
 

@@ -17,22 +17,22 @@
                 <!-- Color -->
                     <label class="container">
                         <input type="radio" value="red" formControlName="color" >
-                        <span class="checkmark-red" (click)="changeColor('red')"></span>
+                        <span class="checkmark-red" (click)="setPathImage('red')"></span>
                     </label>
 
                     <label class="container">
                         <input type="radio" value="black" formControlName="color">
-                        <span class="checkmark-black" (click)="changeColor('black')"></span>
+                        <span class="checkmark-black" (click)="setPathImage('black')"></span>
                     </label>
 
                     <label class="container">
                         <input type="radio" value="grey" formControlName="color">
-                        <span class="checkmark-gray" (click)="changeColor('grey')"></span>
+                        <span class="checkmark-gray" (click)="setPathImage('grey')"></span>
                     </label>
 
                     <label class="container">
                         <input type="radio" value="orange" formControlName="color">
-                        <span class="checkmark-orange" (click)="changeColor('orange')"></span>
+                        <span class="checkmark-orange" (click)="setPathImage('orange')"></span>
                     </label>
     
                 <!-- Text -->
@@ -48,7 +48,7 @@
                 </label>
 
                 <label class="container">
-                    <input type="radio" value="black" formControlName="textColor">
+                    <input type="radio" value="black" formControlName="textColor" checked>
                     <span class="checkmark-black"></span>
                 </label> <br>
                 

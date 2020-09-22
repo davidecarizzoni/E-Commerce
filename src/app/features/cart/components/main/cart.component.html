@@ -21,13 +21,11 @@
         
         <!-- PRODOTTI - STEP 1-->
         <div *ngSwitchCase="0">
-
-            <!-- Prodotti presenti nel carrello -->
             <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0); else emptyCart">
                 <ng-container *ngFor=" let i = index;let item of cartItem | async;">
                     <div class="cartItem">
                         <img [src]="'/assets/product/'+item.id+'_'+item.color+'.jpg'" class="img" alt="img_prodotto">
-                        <p class="costo"> {{item.price}} </p>
+                        <p class="costo"> {{item.price}} €</p>
                         <div class="resoconto">
                             <p>Prodotto</p>
                             <p>Colore</p>
@@ -35,39 +33,52 @@
                             <p>Colore Testo</p>
                         </div>
                         <div class="descrizione">
-                            <p>{{item.name}}</p>
-                            <p>{{item.color}}</p>
-                            <p>{{item.text}}</p>
-                            <p>{{item.textColor}}</p>    
+                            <p>{{item.name | titlecase }}</p>
+                            <p>{{item.color | titlecase}}</p>
+                            <p>{{item.text | titlecase}}</p>
+                            <p>{{item.textColor | titlecase}}</p>    
                         </div>
                         <div class="bottone2" (click)="remove(i,item.price)">
                             <a class="myButton2">RIMUOVI</a>
                         </div>
+                        <hr>
                     </div>
                 </ng-container>
+                <div class="footer">
+                    <p class="totale">TOTALE</p>
+                    <p class="prezzo">{{totPrice}}€</p>
+                    <div class="dots">
+                        <span class="dot1"></span>
+                        <span class="dot2"></span>
+                        <span class="dot3"></span>
+                    </div>
+                    <div class="bottone3">
+                        <a class="myButton3" (click)="next()">PROSEGUI</a>
+                    </div>
+                </div>
             </ng-container>
 
             <ng-template #emptyCart>
                 <h1 class="emptyCart">Carrello vuoto</h1>
+                <div class="footer">
+                    <p class="totale">TOTALE</p>
+                    <p class="prezzo"> / </p>
+                    <div class="dots">
+                        <span class="dot1"></span>
+                        <span class="dot2"></span>
+                        <span class="dot3"></span>
+                    </div>
+                    <div class="bottone3">
+                        <a class="myButton3" disabled routerLink="/home"> HOME </a>
+                    </div>
+                </div>
             </ng-template>
-            <hr>
-            <div class="footer">
-                <p class="totale">TOTALE</p>
-                <p class="prezzo"> {{totPrice}}</p>
-                <div class="dots">
-                    <span class="dot1"></span>
-                    <span class="dot2"></span>
-                    <span class="dot3"></span>
-                </div>
-                <div class="bottone3">
-                    <a class="myButton3" (click)="next()">PROSEGUI</a>
-                </div>
-            </div>
         </div>
 
         <!-- FORM - STEP 2 -->
         <div class="step2" *ngSwitchCase="1">
             <form [formGroup]="shippingForm" (ngSubmit)="next();submitForm()" ngNativeValidate>
+                <br>
                 <div>
                     <label for="nome" class="label">Nome</label>
                     <input type="text" id="nome" class="form" formControlName="nome" required>
@@ -81,15 +92,15 @@
                     <input type="text" id="nome" class="form" formControlName="cellulare" required>
                 </div>
                 <div class="inline">
-                    <label for="nome" class="label">Citta</label>
+                    <label for="nome" class="label">Città</label>
                     <input type="text" id="nome" class="form2" formControlName="città" required>
-                    <label for="nome" class="label">Cap</label>
+                    <label for="nome" class="label">CAP</label>
                     <input type="text" id="nome" class="form2" formControlName="cap" maxlength="5" required>
                 </div>
                 <div>
                     <label for="nome" class="label">Indirizzo</label>
                     <input type="text" id="nome" class="form3" formControlName="indirizzo" required>
-                    <label for="nome" class="label">N</label>
+                    <label for="nome" class="label">N°</label>
                     <input type="text" id="nome" class="form4" formControlName="n" required>
                 </div>
                 <div>
@@ -125,11 +136,12 @@
                     <p>Spedito al sig</p>
                 </div>
                 <div class="descrizione2">
-                    <p>Samsung s10</p>
-                    <p>Nero</p>
-                    <p>nulla</p>
-                    <p>bianchi</p>
-                    <p>nulla</p>
+                    <p> {{ (cartItem | async).length}} </p>
+                    <p> {{totPrice}}€ </p>
+                    <!-- <p> {{ (cartItem | async).length  * 0.8}} €</p> -->
+                    <p> Gratis </p> <!-- Da implementare logiche sugli sconti dopo tot prodotti aquistati-->
+                    <p> {{this.shippingForm.get('indirizzo').value}} </p>
+                    <p> {{this.shippingForm.get('nome').value}} {{this.shippingForm.get('cognome').value}}  </p>
                 </div>
             </div>
             <form [formGroup]="paymentForm" (ngSubmit)="sendEmail()">
@@ -166,7 +178,7 @@
                         <span class="dot1"></span>
                     </div>
                     <div class="bottone5">
-                        <button type="submit" class="myButton5">ACQUISTA</button>
+                        <button [disabled]="paymentForm.invalid" type="submit" class="myButton5">ACQUISTA</button>
                     </div>
                 </div>
             </form>

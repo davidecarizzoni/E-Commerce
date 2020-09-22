@@ -12,28 +12,25 @@
     {
       "id": 0,
       "name": "Maglietta",
-      "imgPath": "/assets/product/maglietta_black.jpg",
       "color": "black",
       "text": "",
-      "textColor": "white",
+      "textColor": "black",
       "price":10
     },
     {
       "id": 1,
       "name": "Pantaloncini",
-      "imgPath": "/assets/product/pantaloncini_black.jpg",
       "color": "black",
       "text": "",
-      "textColor": "white",
+      "textColor": "black",
       "price":20
     },
     {
       "id": 2,
       "name": "Felpa",
-      "imgPath": "/assets/product/felpa_black.jpg",
       "color": "black",
       "text": "",
-      "textColor": "white",
+      "textColor": "black",
       "price":25
     }
   ]

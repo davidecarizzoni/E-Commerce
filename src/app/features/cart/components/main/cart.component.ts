@@ -82,6 +82,7 @@ export class CartComponent implements OnInit {
     console.log(this.shippingForm.value)
   }
 
+  // Da mettere in un servcice
   sendEmail(){
     let msg:string="Hai acquistato sullo store di Davide\n Prezzo: "+ this.totPrice+ "\n";
     msg+=" Prodotti:\n"
