@@ -179,6 +179,20 @@
 
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#cartItem">cartItem</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
@@ -194,7 +208,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/features/customize/components/customize.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/features/customize/components/customize.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -274,7 +288,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/features/customize/components/customize.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/features/customize/components/customize.component.ts:22</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -310,8 +324,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/features/customize/components/customize.component.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/features/customize/components/customize.component.ts:37</a></div>
                 </td>
             </tr>
 
@@ -380,8 +394,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">src/app/features/customize/components/customize.component.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/features/customize/components/customize.component.ts:47</a></div>
                 </td>
             </tr>
 
@@ -419,8 +433,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/features/customize/components/customize.component.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/features/customize/components/customize.component.ts:30</a></div>
                 </td>
             </tr>
 
@@ -458,8 +472,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/app/features/customize/components/customize.component.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/features/customize/components/customize.component.ts:43</a></div>
                 </td>
             </tr>
 
@@ -507,7 +521,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/features/customize/components/customize.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/features/customize/components/customize.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -516,6 +530,33 @@
         </table>
 </section>
 
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cartItem"></a>
+                        <span class="name"><b>cartItem</b><a href="#cartItem"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>cartItem()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/features/customize/components/customize.component.ts:26</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
 </div>
 
 
@@ -523,9 +564,10 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
 import { select, Store } from &#x27;@ngrx/store&#x27;;
-import { Subscription } from &#x27;rxjs&#x27;;
+import { Observable, Subscription } from &#x27;rxjs&#x27;;
 import { filter, switchMap } from &#x27;rxjs/operators&#x27;;
 import { CartItem } from &#x27;src/app/core/model/cart-item.interface&#x27;;
+import { getCartItem } from &#x27;src/app/redux/cart&#x27;;
 import { addItemToCart } from &#x27;src/app/redux/cart/cart.action&#x27;;
 import { getClothesById } from &#x27;src/app/redux/clothes&#x27;;
 
@@ -544,20 +586,18 @@ export class CustomizeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private store: Store, private router: Router) { }
 
+  get cartItem(): Observable&lt;CartItem[]&gt; {
+    return this.store.pipe(select(getCartItem));
+  }
+
   ngOnInit(): void {
     this.subscription.add(this.route.params.pipe(
       filter(params &#x3D;&gt; params !&#x3D; null &amp;&amp; params[&#x27;id&#x27;] !&#x3D; null),
       switchMap(params &#x3D;&gt; this.store.pipe(select(getClothesById, { id: Number(params[&#x27;id&#x27;]) }))),
-    ).subscribe(clothes &#x3D;&gt; {
-      this.clothes &#x3D; clothes;
-      console.log(this.clothes)
-    }));
+    ).subscribe(clothes &#x3D;&gt; {this.clothes &#x3D; clothes; }));
   }
 
-
   editForm(cartItem: CartItem) {
-    //Gli passo il path dell&#x27;immagine - salva nel carrello anche il path
-    cartItem.imgPath &#x3D; this.clothes.imgPath;
     this.store.dispatch(addItemToCart({cartItem}));
     this.router.navigateByUrl(&#x27;/cart&#x27;);
     this.clothes &#x3D; cartItem;
@@ -578,7 +618,12 @@ export class CustomizeComponent implements OnInit {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;header&quot;&gt;
     &lt;div class&#x3D;&quot;over-cart&quot;&gt;
-        &lt;p class&#x3D;&quot;cart&quot;&gt; CARRELLO &lt;/p&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;((cartItem | async) &amp;&amp; (cartItem | async).length &gt; 0)&quot;&gt; 
+            &lt;p class&#x3D;&quot;cart&quot;&gt; CARRELLO ({{ (cartItem | async).length}}) &lt;/p&gt;  
+        &lt;/ng-container&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;((cartItem | async) &amp;&amp; (cartItem | async).length &#x3D;&#x3D; 0)&quot;&gt; 
+            &lt;p class&#x3D;&quot;cart&quot;&gt; CARRELLO &lt;/p&gt;  
+        &lt;/ng-container&gt;
         &lt;img src&#x3D;&quot;../../../assets/icone/cart.png&quot; alt&#x3D;&quot;carrello&quot; class&#x3D;&quot;carrello&quot;&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;over-home&quot; routerLink&#x3D;&quot;/home&quot;&gt;
@@ -903,7 +948,7 @@ export class CustomizeComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="header">    <div class="over-cart">        <p class="cart"> CARRELLO </p>        <img src="../../../assets/icone/cart.png" alt="carrello" class="carrello">    </div>    <div class="over-home" routerLink="/home">        <p class="home"> HOME </p>        <img src="../../../assets/icone/home.png" alt="carrello" class="home-img">    </div>    <p class="title"> <b> Personalizza </b> il tuo prodotto</p></div><div class="background">   <section>        <app-customize-form  (formSubmitEvent)="editForm($event)"  [clothes]="clothes" (undoEvent)="undo()"></app-customize-form>   </section></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="header">    <div class="over-cart">        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)">             <p class="cart"> CARRELLO ({{ (cartItem | async).length}}) </p>          </ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)">             <p class="cart"> CARRELLO </p>          </ng-container>        <img src="../../../assets/icone/cart.png" alt="carrello" class="carrello">    </div>    <div class="over-home" routerLink="/home">        <p class="home"> HOME </p>        <img src="../../../assets/icone/home.png" alt="carrello" class="home-img">    </div>    <p class="title"> <b> Personalizza </b> il tuo prodotto</p></div><div class="background">   <section>        <app-customize-form  (formSubmitEvent)="editForm($event)"  [clothes]="clothes" (undoEvent)="undo()"></app-customize-form>   </section></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CustomizeComponent', 'selector': 'app-customize'},{'name': 'CustomizeFormComponent', 'selector': 'app-customize-form'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputTextComponent', 'selector': 'app-input-text'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'SignupComponent', 'selector': 'app-signup'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CustomizeComponent'};

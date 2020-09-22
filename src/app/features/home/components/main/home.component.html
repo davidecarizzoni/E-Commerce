@@ -1,6 +1,12 @@
 <div class="header">
     <div class="over">
-        <p class="cart"> CARRELLO </p>
+        <!-- Aggiungere sezione items in cart -->
+        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)"> 
+            <p class="cart">CARRELLO ({{ (cartItem | async).length}})</p>  
+        </ng-container>
+        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)"> 
+            <p class="cart">CARRELLO</p>  
+        </ng-container>
         <img src="../../../assets/icone/cart.png" alt="carrello" class="carrello">
     </div>
     <p class="title">Benvenuto nello store di Davide!</p>
@@ -9,7 +15,6 @@
     <div class="carousel">
         <div class="carousel-inner">
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-            <!-- Passare id del vestito -->
             <div class="carousel-item" >
                 <img src="http://fakeimg.pl/2000x800/89ac76/fff/?text=Maglietta">
             </div>
@@ -45,8 +50,3 @@
     </div>  
 </div>
 
-<ng-container>
-    <section>
-
-    </section>
-</ng-container>

@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { CartItem } from 'src/app/core/model/cart-item.interface';
+import { getCartItem } from 'src/app/redux/cart';
 import { addItemToCart } from 'src/app/redux/cart/cart.action';
 import { getClothesById } from 'src/app/redux/clothes';
 
@@ -22,20 +23,18 @@ export class CustomizeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private store: Store, private router: Router) { }
 
+  get cartItem(): Observable<CartItem[]> {
+    return this.store.pipe(select(getCartItem));
+  }
+
   ngOnInit(): void {
     this.subscription.add(this.route.params.pipe(
       filter(params => params != null && params['id'] != null),
       switchMap(params => this.store.pipe(select(getClothesById, { id: Number(params['id']) }))),
-    ).subscribe(clothes => {
-      this.clothes = clothes;
-      console.log(this.clothes)
-    }));
+    ).subscribe(clothes => {this.clothes = clothes; }));
   }
 
-
   editForm(cartItem: CartItem) {
-    //Gli passo il path dell'immagine - salva nel carrello anche il path
-    cartItem.imgPath = this.clothes.imgPath;
     this.store.dispatch(addItemToCart({cartItem}));
     this.router.navigateByUrl('/cart');
     this.clothes = cartItem;

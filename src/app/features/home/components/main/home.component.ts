@@ -1,6 +1,9 @@
-import { Store} from '@ngrx/store';
+import { select, Store} from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { CartItem } from 'src/app/core/model/cart-item.interface';
+import { getCartItem } from 'src/app/redux/cart';
 
 
 
@@ -17,6 +20,10 @@ export class HomeComponent implements OnInit {
     this.id = 0;
   }
 
+  get cartItem(): Observable<CartItem[]> {
+    return this.store.pipe(select(getCartItem));
+  }
+
   currentClothesId(n:number){
     this.id = n;
   }
@@ -25,8 +32,6 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/customize', this.id]);
   }
 
-  ngOnInit(): void {
-    console.log(this.id);
-  }
+  ngOnInit(): void {}
 
 }

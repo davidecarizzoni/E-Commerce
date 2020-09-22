@@ -1,6 +1,11 @@
 <div class="header">
     <div class="over-cart">
-        <p class="cart"> CARRELLO </p>
+        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)"> 
+            <p class="cart"> CARRELLO ({{ (cartItem | async).length}}) </p>  
+        </ng-container>
+        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)"> 
+            <p class="cart"> CARRELLO </p>  
+        </ng-container>
         <img src="../../../assets/icone/cart.png" alt="carrello" class="carrello">
     </div>
     <div class="over-home" routerLink="/home">
