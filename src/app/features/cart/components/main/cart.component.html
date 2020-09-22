@@ -27,7 +27,7 @@
                 <ng-container *ngFor=" let i = index;let item of cartItem | async;">
                     <div class="cartItem">
                         <img [src]="'/assets/product/'+item.id+'_'+item.color+'.jpg'" class="img" alt="img_prodotto">
-                        <p class="costo">€ 15</p>
+                        <p class="costo"> {{item.price}} </p>
                         <div class="resoconto">
                             <p>Prodotto</p>
                             <p>Colore</p>
@@ -40,7 +40,7 @@
                             <p>{{item.text}}</p>
                             <p>{{item.textColor}}</p>    
                         </div>
-                        <div class="bottone2" (click)="remove(i)">
+                        <div class="bottone2" (click)="remove(i,item.price)">
                             <a class="myButton2">RIMUOVI</a>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
             <hr>
             <div class="footer">
                 <p class="totale">TOTALE</p>
-                <p class="prezzo">30€</p>
+                <p class="prezzo"> {{totPrice}}</p>
                 <div class="dots">
                     <span class="dot1"></span>
                     <span class="dot2"></span>
@@ -132,7 +132,7 @@
                     <p>nulla</p>
                 </div>
             </div>
-            <form [formGroup]="paymentForm">
+            <form [formGroup]="paymentForm" (ngSubmit)="sendEmail()">
                 <div>
                     <label for="nome" class="label">Seleziona metodo di pagamento</label>
                     <select name="nome" id="nome" class="form" formControlName="carta">
@@ -143,7 +143,6 @@
                 </div>
                 <div>
                     <label for="nome" class="label">Tipo carta</label>
-                    <input type="text" id="nome" class="form">
                     <select name="nome" id="nome" class="form" formControlName="tipo">
                         <option value="Visa" class="option">Visa</option>
                         <option value="MasterCard" class="option">MasterCard</option>
@@ -156,21 +155,22 @@
                     <label for="nome" class="label">CVC</label>
                     <input type="text" id="nome" class="form6" formControlName="CVC">
                 </div>
+                <hr>
+                <div class="footer">
+                    <div class="bottone4">
+                        <button type="button" class="myButton4" (click)="back()">INDIETRO</button>
+                    </div>
+                    <div class="dots2">
+                        <span class="dot2"></span>
+                        <span class="dot3"></span>
+                        <span class="dot1"></span>
+                    </div>
+                    <div class="bottone5">
+                        <button type="submit" class="myButton5">ACQUISTA</button>
+                    </div>
+                </div>
             </form>
-            <hr>
-            <div class="footer">
-                <div class="bottone4">
-                    <a class="myButton4" (click)="back()">INDIETRO</a>
-                </div>
-                <div class="dots2">
-                    <span class="dot2"></span>
-                    <span class="dot3"></span>
-                    <span class="dot1"></span>
-                </div>
-                <div class="bottone5">
-                    <a class="myButton5" routerLink="/home">ACQUISTA</a>
-                </div>
-            </div>
+            
         </div>
     </div>
 
