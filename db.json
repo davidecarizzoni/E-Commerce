@@ -6,6 +6,13 @@
       "name": "Davide",
       "surname": "Carizzoni",
       "password": "1234"
+    },
+    {
+      "username": "provaregistrazione",
+      "surname": "",
+      "name": "",
+      "password": "provaregistrazione",
+      "id": 1
     }
   ],
   "clothes": [
@@ -15,7 +22,7 @@
       "color": "black",
       "text": "",
       "textColor": "black",
-      "price":10
+      "price": 10
     },
     {
       "id": 1,
@@ -23,7 +30,7 @@
       "color": "black",
       "text": "",
       "textColor": "black",
-      "price":20
+      "price": 20
     },
     {
       "id": 2,
@@ -31,7 +38,7 @@
       "color": "black",
       "text": "",
       "textColor": "black",
-      "price":25
+      "price": 25
     }
   ]
 }

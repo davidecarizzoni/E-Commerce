@@ -6,7 +6,7 @@
     background-image: linear-gradient(90deg, rgba(129, 210, 248, 1), rgba(193, 129, 255, 1) 100%);
 }
 .content{
-    padding-top: 50px;
+    padding-top: 25px;
 }
 
 .product {
@@ -128,16 +128,6 @@
         display: inline-block;
       }
 
-      .checkmark-green {
-        margin-right: 20px;
-        height: 35px;
-        width: 35px;   
-        cursor: pointer;
-        border: 1px solid gray;
-        background-color: lightseagreen;
-        border-radius: 50%;
-        display: inline-block;
-      }
 
       .checkmark-orange {
         margin-right: 18px;
@@ -151,20 +141,24 @@
       }
       
       .container input:checked ~ .checkmark-white {
-        border:1px solid rgb(193, 129, 255);
+        border:3px solid rgb(193, 129, 255);
         }
       }
 
+      .container input:checked ~ .checkmark-red {
+        border:3px solid rgb(193, 129, 255);
+        }
+
       .container input:checked ~ .checkmark-black {
-        border:1px solid rgb(193, 129, 255);
+        border:3px solid rgb(193, 129, 255);
       }
 
       .container input:checked ~ .checkmark-orange {
-        border:1px solid rgb(193, 129, 255);
+        border:3px solid rgb(193, 129, 255);
       }
 
-      .container input:checked ~ .checkmark-green {
-        border:1px solid rgb(193, 129, 255);
+      .container input:checked ~ .checkmark-gray {
+        border:3px solid rgb(193, 129, 255);
       }
       
       .checkmark:after {
@@ -192,14 +186,14 @@
 
      //BUTTON
     .div-button{
-        padding-right: 25px;
+        padding-right: 26px;
     }
 
     .bottone {
         right: 2px;
         padding: 15px;
         margin-right: 20px;
-        padding-top: 25px;
+        padding-top: 20px;
         float: right;
         position: relative;
     }
@@ -220,9 +214,11 @@
     .myButton:active {
         position: relative;
         top: 1px;
+        border: none;
     }
+  
     .bottone2 {
-        padding-top:25px;
+        padding-top:20px;
         padding-left: 15px;
         padding-bottom: 20px;
         // top: 30px;

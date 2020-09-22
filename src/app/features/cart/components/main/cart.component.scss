@@ -186,6 +186,8 @@
         border-radius: 50%;
         display: inline-block;
     }
+
+    //BUTTON
     .bottone3 {
         float: right;
         position: relative;
@@ -257,6 +259,25 @@
         position: relative;
         top: 1px;
     }
+
+
+    //LOGOUT - BACK TO HOME (End)
+    .bottone-logout {
+        position: relative;
+        float: left;
+        padding: 8px;
+    }
+    .bottone-home {
+        position: relative;
+        float: right;
+        padding: 8px;
+        padding-left: 250px;
+    }
+    .thanks{
+        padding-left: 80px;
+    }
+
+    //DOTS
     .dots2 {
         padding-left: 85px;
         padding-top: 15px;

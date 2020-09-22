@@ -160,7 +160,13 @@
                                 <a href="#back">back</a>
                             </li>
                             <li>
+                                <a href="#deleteCurrentCart">deleteCurrentCart</a>
+                            </li>
+                            <li>
                                 <a href="#getTotalPrice">getTotalPrice</a>
+                            </li>
+                            <li>
+                                <a href="#logout">logout</a>
                             </li>
                             <li>
                                 <a href="#next">next</a>
@@ -343,6 +349,45 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="deleteCurrentCart"></a>
+                    <span class="name">
+                        <b>
+                            deleteCurrentCart
+                        </b>
+                        <a href="#deleteCurrentCart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteCurrentCart()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/features/cart/components/main/cart.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getTotalPrice"></a>
                     <span class="name">
                         <b>
@@ -363,6 +408,45 @@
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="71"
                             class="link-to-prism">src/app/features/cart/components/main/cart.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <b>
+                            logout
+                        </b>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">src/app/features/cart/components/main/cart.component.ts:120</a></div>
                 </td>
             </tr>
 
@@ -560,8 +644,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">src/app/features/cart/components/main/cart.component.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/features/cart/components/main/cart.component.ts:91</a></div>
                 </td>
             </tr>
 
@@ -599,8 +683,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/app/features/cart/components/main/cart.component.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/features/cart/components/main/cart.component.ts:86</a></div>
                 </td>
             </tr>
 
@@ -945,11 +1029,16 @@ export class CartComponent implements OnInit {
     this.store.dispatch(initCart({cart}));
   }
 
-  submitForm(){
-    console.log(this.shippingForm.value)
+  deleteCurrentCart(){
+    let cart: CartItem[] &#x3D; [];
+    this.store.dispatch(initCart({cart}));
   }
 
-  // Da mettere in un servcice
+  submitForm(){
+    console.log(&quot;Shipping for submitted&quot; + this.shippingForm.value)
+  }
+
+  
   sendEmail(){
     let message:string&#x3D;&quot;Hai acquistato sullo store di Davide\n Prezzo: &quot;+ this.totPrice+ &quot;\n&quot;;
     let indirizzo &#x3D; this.shippingForm.get(&#x27;indirizzo&#x27;).value;
@@ -965,8 +1054,9 @@ export class CartComponent implements OnInit {
     message+&#x3D; &quot;Shipping detail:\n&quot;
     message+&#x3D; &quot;Indirizzo: &quot;+ indirizzo +&quot; Città: &quot;+ città +&quot; CAP:&quot; + CAP;
     
-    this.router.navigateByUrl(&#x27;/home&#x27;);
-
+    //this.router.navigateByUrl(&#x27;/home&#x27;);
+    this.next();
+    
     const headers &#x3D; new HttpHeaders({ &#x27;Content-Type&#x27;: &#x27;application/json&#x27; });
     this.http.sendMail(&#x27;https://formspree.io/xvovoaow&#x27;,
         { name: user, replyto: &#x27;davidecarizzoni@gmail.com&#x27;, message: message},
@@ -975,6 +1065,12 @@ export class CartComponent implements OnInit {
             console.log(response+&quot; risposta&quot;);
           }
         );
+    
+  }
+
+  logout(){
+    sessionStorage.setItem(&quot;user&quot;, &#x27;&#x27;);
+    this.router.navigateByUrl(&#x27;/login&#x27;);
   }
 }
 </code></pre>
@@ -987,21 +1083,21 @@ export class CartComponent implements OnInit {
         &lt;p class&#x3D;&quot;scritta&quot;&gt;Home&lt;/p&gt;
     &lt;/div&gt;
     &lt;ng-container&gt;
-        &lt;ng-container *ngIf&#x3D;&quot;((cartItem | async) &amp;&amp; (cartItem | async).length &gt; 0)&quot;&gt; 
-            &lt;p class&#x3D;&quot;title&quot;&gt;Carrello ({{ (cartItem | async).length}})&lt;/p&gt;  
+        &lt;ng-container *ngIf&#x3D;&quot;((cartItem | async) &amp;&amp; (cartItem | async).length &gt; 0)&quot;&gt;
+            &lt;p class&#x3D;&quot;title&quot;&gt;Carrello ({{ (cartItem | async).length}})&lt;/p&gt;
         &lt;/ng-container&gt;
         &lt;ng-container *ngIf&#x3D;&quot;((cartItem | async) &amp;&amp; (cartItem | async).length &#x3D;&#x3D; 0)&quot;&gt;
             &lt;p class&#x3D;&quot;title&quot;&gt;Carrello Vuoto&lt;/p&gt;
         &lt;/ng-container &gt;
     &lt;/ng-container&gt;
-  
-   
+
+
 &lt;/div&gt;
 &lt;div class&#x3D;&quot;background&quot;&gt;
 
-    
+
     &lt;div class&#x3D;&quot;product&quot; [ngSwitch]&#x3D;&quot;prosegui&quot;&gt;
-        
+
         &lt;!-- PRODOTTI - STEP 1--&gt;
         &lt;div *ngSwitchCase&#x3D;&quot;0&quot;&gt;
             &lt;ng-container *ngIf&#x3D;&quot;((cartItem | async) &amp;&amp; (cartItem | async).length &gt; 0); else emptyCart&quot;&gt;
@@ -1019,7 +1115,7 @@ export class CartComponent implements OnInit {
                             &lt;p&gt;{{item.name | titlecase }}&lt;/p&gt;
                             &lt;p&gt;{{item.color | titlecase}}&lt;/p&gt;
                             &lt;p&gt;{{item.text | titlecase}}&lt;/p&gt;
-                            &lt;p&gt;{{item.textColor | titlecase}}&lt;/p&gt;    
+                            &lt;p&gt;{{item.textColor | titlecase}}&lt;/p&gt;
                         &lt;/div&gt;
                         &lt;div class&#x3D;&quot;bottone2&quot; (click)&#x3D;&quot;remove(i,item.price)&quot;&gt;
                             &lt;a class&#x3D;&quot;myButton2&quot;&gt;RIMUOVI&lt;/a&gt;
@@ -1105,7 +1201,7 @@ export class CartComponent implements OnInit {
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/form&gt;
-           
+
         &lt;/div&gt;
 
         &lt;!-- PAGAMENTO - STEP 2 --&gt;
@@ -1165,18 +1261,24 @@ export class CartComponent implements OnInit {
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/form&gt;
-            
         &lt;/div&gt;
-    &lt;/div&gt;
 
-
-   
-&lt;!-- 
-    &lt;div&gt;
-
-        &lt;/ng-container&gt;
-       
-    &lt;/div&gt; --&gt;</code></pre>
+        &lt;!-- STEP 3 - RINGRAZIAMENTO ACQUISTO, svuoto carrello --&gt;
+        &lt;div *ngSwitchCase&#x3D;&quot;3&quot;&gt;
+            &lt;div&gt;
+                &lt;h1 class&#x3D;&quot;thanks&quot;&gt;Grazie per l&#x27;acquisto &lt;/h1&gt;
+                &lt;h3 class&#x3D;&quot;thanks&quot;&gt;Le abbiamo inviato una mail di resoconto &lt;/h3&gt;
+                &lt;div class&#x3D;&quot;footer&quot;&gt;
+                    &lt;div class&#x3D;&quot;bottone-logout&quot;&gt;
+                        &lt;button (click)&#x3D;&quot;logout()&quot; class&#x3D;&quot;myButton4&quot;&gt; LOGOUT &lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;bottone-home&quot;&gt;
+                        &lt;button (click)&#x3D;&quot;deleteCurrentCart()&quot; routerLink&#x3D;&quot;/home&quot; class&#x3D;&quot;myButton5&quot;&gt; HOME &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -1371,6 +1473,8 @@ export class CartComponent implements OnInit {
         border-radius: 50%;
         display: inline-block;
     }
+
+    //BUTTON
     .bottone3 {
         float: right;
         position: relative;
@@ -1442,6 +1546,25 @@ export class CartComponent implements OnInit {
         position: relative;
         top: 1px;
     }
+
+
+    //LOGOUT - BACK TO HOME (End)
+    .bottone-logout {
+        position: relative;
+        float: left;
+        padding: 8px;
+    }
+    .bottone-home {
+        position: relative;
+        float: right;
+        padding: 8px;
+        padding-left: 250px;
+    }
+    .thanks{
+        padding-left: 80px;
+    }
+
+    //DOTS
     .dots2 {
         padding-left: 85px;
         padding-top: 15px;
@@ -1576,7 +1699,7 @@ export class CartComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="header">    <div class="home" routerLink="/home">        <img src="../../../assets/icone/home.png" alt="home" class="house">        <p class="scritta">Home</p>    </div>    <ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)">             <p class="title">Carrello ({{ (cartItem | async).length}})</p>          </ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)">            <p class="title">Carrello Vuoto</p>        </ng-container >    </ng-container>     </div><div class="background">        <div class="product" [ngSwitch]="prosegui">                <!-- PRODOTTI - STEP 1-->        <div *ngSwitchCase="0">            <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0); else emptyCart">                <ng-container *ngFor=" let i = index;let item of cartItem | async;">                    <div class="cartItem">                        <img [src]="\'/assets/product/\'+item.id+\'_\'+item.color+\'.jpg\'" class="img" alt="img_prodotto">                        <p class="costo"> {{item.price}} €</p>                        <div class="resoconto">                            <p>Prodotto</p>                            <p>Colore</p>                            <p>Testo</p>                            <p>Colore Testo</p>                        </div>                        <div class="descrizione">                            <p>{{item.name | titlecase }}</p>                            <p>{{item.color | titlecase}}</p>                            <p>{{item.text | titlecase}}</p>                            <p>{{item.textColor | titlecase}}</p>                            </div>                        <div class="bottone2" (click)="remove(i,item.price)">                            <a class="myButton2">RIMUOVI</a>                        </div>                        <hr>                    </div>                </ng-container>                <div class="footer">                    <p class="totale">TOTALE</p>                    <p class="prezzo">{{totPrice}}€</p>                    <div class="dots">                        <span class="dot1"></span>                        <span class="dot2"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone3">                        <a class="myButton3" (click)="next()">PROSEGUI</a>                    </div>                </div>            </ng-container>            <ng-template #emptyCart>                <h1 class="emptyCart">Carrello vuoto</h1>                <div class="footer">                    <p class="totale">TOTALE</p>                    <p class="prezzo"> / </p>                    <div class="dots">                        <span class="dot1"></span>                        <span class="dot2"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone3">                        <a class="myButton3" disabled routerLink="/home"> HOME </a>                    </div>                </div>            </ng-template>        </div>        <!-- FORM - STEP 2 -->        <div class="step2" *ngSwitchCase="1">            <form [formGroup]="shippingForm" (ngSubmit)="next();submitForm()" ngNativeValidate>                <br>                <div>                    <label for="nome" class="label">Nome</label>                    <input type="text" id="nome" class="form" formControlName="nome" required>                </div>                <div>                    <label for="nome" class="label">Cognome</label>                    <input type="text" id="nome" class="form" formControlName="cognome" required>                </div>                <div>                    <label for="nome" class="label">Cellulare</label>                    <input type="text" id="nome" class="form" formControlName="cellulare" required>                </div>                <div class="inline">                    <label for="nome" class="label">Città</label>                    <input type="text" id="nome" class="form2" formControlName="città" required>                    <label for="nome" class="label">CAP</label>                    <input type="text" id="nome" class="form2" formControlName="cap" maxlength="5" required>                </div>                <div>                    <label for="nome" class="label">Indirizzo</label>                    <input type="text" id="nome" class="form3" formControlName="indirizzo" required>                    <label for="nome" class="label">N°</label>                    <input type="text" id="nome" class="form4" formControlName="n" required>                </div>                <div>                    <label for="nome" class="label">Informazioni per corriere</label>                    <input type="text" id="nome" class="form" formControlName="information" required maxlength="50">                </div>                <hr>                <div class="footer">                    <div class="bottone4">                        <a class="myButton4" (click)="back()"> INDIETRO </a>                    </div>                    <div class="dots2">                        <span class="dot2"></span>                        <span class="dot1"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone5">                        <button type="submit" class="myButton5"> PROSEGUI </button>                    </div>                </div>            </form>                   </div>        <!-- PAGAMENTO - STEP 2 -->        <div *ngSwitchCase="2">            <div class="prodotti">                <div class="resoconto2">                    <p>Prodotti acquistati</p>                    <p>Prezzo</p>                    <p>Spedizione</p>                    <p>Indirizzo</p>                    <p>Spedito al sig</p>                </div>                <div class="descrizione2">                    <p> {{ (cartItem | async).length}} </p>                    <p> {{totPrice}}€ </p>                    <!-- <p> {{ (cartItem | async).length  * 0.8}} €</p> -->                    <p> Gratis </p> <!-- Da implementare logiche sugli sconti dopo tot prodotti aquistati-->                    <p> {{this.shippingForm.get(\'indirizzo\').value}} </p>                    <p> {{this.shippingForm.get(\'nome\').value}} {{this.shippingForm.get(\'cognome\').value}}  </p>                </div>            </div>            <form [formGroup]="paymentForm" (ngSubmit)="sendEmail()">                <div>                    <label for="nome" class="label">Seleziona metodo di pagamento</label>                    <select name="nome" id="nome" class="form" formControlName="carta">                            <option value="cartaCredito" class="option">Carta di credito</option>                            <option value="cartaDebito" class="option">Carta di debito</option>                            <option value="cartaPrepagata" class="option">Carta prepagata</option>                    </select>                </div>                <div>                    <label for="nome" class="label">Tipo carta</label>                    <select name="nome" id="nome" class="form" formControlName="tipo">                        <option value="Visa" class="option">Visa</option>                        <option value="MasterCard" class="option">MasterCard</option>                        <option value="Maestro" class="option">Maestro</option>                    </select>                </div>                <div>                    <label for="nome" class="label">Numero carta</label>                    <input id="nome" class="form5" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="numero">                    <label for="nome" class="label">CVC</label>                    <input type="text" id="nome" class="form6" formControlName="CVC">                </div>                <hr>                <div class="footer">                    <div class="bottone4">                        <button type="button" class="myButton4" (click)="back()">INDIETRO</button>                    </div>                    <div class="dots2">                        <span class="dot2"></span>                        <span class="dot3"></span>                        <span class="dot1"></span>                    </div>                    <div class="bottone5">                        <button type="submit" class="myButton5">ACQUISTA</button>                    </div>                </div>            </form>                    </div>    </div>   <!--     <div>        </ng-container>           </div> --></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="header">    <div class="home" routerLink="/home">        <img src="../../../assets/icone/home.png" alt="home" class="house">        <p class="scritta">Home</p>    </div>    <ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)">            <p class="title">Carrello ({{ (cartItem | async).length}})</p>        </ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)">            <p class="title">Carrello Vuoto</p>        </ng-container >    </ng-container></div><div class="background">    <div class="product" [ngSwitch]="prosegui">        <!-- PRODOTTI - STEP 1-->        <div *ngSwitchCase="0">            <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0); else emptyCart">                <ng-container *ngFor=" let i = index;let item of cartItem | async;">                    <div class="cartItem">                        <img [src]="\'/assets/product/\'+item.id+\'_\'+item.color+\'.jpg\'" class="img" alt="img_prodotto">                        <p class="costo"> {{item.price}} €</p>                        <div class="resoconto">                            <p>Prodotto</p>                            <p>Colore</p>                            <p>Testo</p>                            <p>Colore Testo</p>                        </div>                        <div class="descrizione">                            <p>{{item.name | titlecase }}</p>                            <p>{{item.color | titlecase}}</p>                            <p>{{item.text | titlecase}}</p>                            <p>{{item.textColor | titlecase}}</p>                        </div>                        <div class="bottone2" (click)="remove(i,item.price)">                            <a class="myButton2">RIMUOVI</a>                        </div>                        <hr>                    </div>                </ng-container>                <div class="footer">                    <p class="totale">TOTALE</p>                    <p class="prezzo">{{totPrice}}€</p>                    <div class="dots">                        <span class="dot1"></span>                        <span class="dot2"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone3">                        <a class="myButton3" (click)="next()">PROSEGUI</a>                    </div>                </div>            </ng-container>            <ng-template #emptyCart>                <h1 class="emptyCart">Carrello vuoto</h1>                <div class="footer">                    <p class="totale">TOTALE</p>                    <p class="prezzo"> / </p>                    <div class="dots">                        <span class="dot1"></span>                        <span class="dot2"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone3">                        <a class="myButton3" disabled routerLink="/home"> HOME </a>                    </div>                </div>            </ng-template>        </div>        <!-- FORM - STEP 2 -->        <div class="step2" *ngSwitchCase="1">            <form [formGroup]="shippingForm" (ngSubmit)="next();submitForm()" ngNativeValidate>                <br>                <div>                    <label for="nome" class="label">Nome</label>                    <input type="text" id="nome" class="form" formControlName="nome" required>                </div>                <div>                    <label for="nome" class="label">Cognome</label>                    <input type="text" id="nome" class="form" formControlName="cognome" required>                </div>                <div>                    <label for="nome" class="label">Cellulare</label>                    <input type="text" id="nome" class="form" formControlName="cellulare" required>                </div>                <div class="inline">                    <label for="nome" class="label">Città</label>                    <input type="text" id="nome" class="form2" formControlName="città" required>                    <label for="nome" class="label">CAP</label>                    <input type="text" id="nome" class="form2" formControlName="cap" maxlength="5" required>                </div>                <div>                    <label for="nome" class="label">Indirizzo</label>                    <input type="text" id="nome" class="form3" formControlName="indirizzo" required>                    <label for="nome" class="label">N°</label>                    <input type="text" id="nome" class="form4" formControlName="n" required>                </div>                <div>                    <label for="nome" class="label">Informazioni per corriere</label>                    <input type="text" id="nome" class="form" formControlName="information" required maxlength="50">                </div>                <hr>                <div class="footer">                    <div class="bottone4">                        <a class="myButton4" (click)="back()"> INDIETRO </a>                    </div>                    <div class="dots2">                        <span class="dot2"></span>                        <span class="dot1"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone5">                        <button type="submit" class="myButton5"> PROSEGUI </button>                    </div>                </div>            </form>        </div>        <!-- PAGAMENTO - STEP 2 -->        <div *ngSwitchCase="2">            <div class="prodotti">                <div class="resoconto2">                    <p>Prodotti acquistati</p>                    <p>Prezzo</p>                    <p>Spedizione</p>                    <p>Indirizzo</p>                    <p>Spedito al sig</p>                </div>                <div class="descrizione2">                    <p> {{ (cartItem | async).length}} </p>                    <p> {{totPrice}}€ </p>                    <!-- <p> {{ (cartItem | async).length  * 0.8}} €</p> -->                    <p> Gratis </p> <!-- Da implementare logiche sugli sconti dopo tot prodotti aquistati-->                    <p> {{this.shippingForm.get(\'indirizzo\').value}} </p>                    <p> {{this.shippingForm.get(\'nome\').value}} {{this.shippingForm.get(\'cognome\').value}}  </p>                </div>            </div>            <form [formGroup]="paymentForm" (ngSubmit)="sendEmail()">                <div>                    <label for="nome" class="label">Seleziona metodo di pagamento</label>                    <select name="nome" id="nome" class="form" formControlName="carta">                            <option value="cartaCredito" class="option">Carta di credito</option>                            <option value="cartaDebito" class="option">Carta di debito</option>                            <option value="cartaPrepagata" class="option">Carta prepagata</option>                    </select>                </div>                <div>                    <label for="nome" class="label">Tipo carta</label>                    <select name="nome" id="nome" class="form" formControlName="tipo">                        <option value="Visa" class="option">Visa</option>                        <option value="MasterCard" class="option">MasterCard</option>                        <option value="Maestro" class="option">Maestro</option>                    </select>                </div>                <div>                    <label for="nome" class="label">Numero carta</label>                    <input id="nome" class="form5" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="numero">                    <label for="nome" class="label">CVC</label>                    <input type="text" id="nome" class="form6" formControlName="CVC">                </div>                <hr>                <div class="footer">                    <div class="bottone4">                        <button type="button" class="myButton4" (click)="back()">INDIETRO</button>                    </div>                    <div class="dots2">                        <span class="dot2"></span>                        <span class="dot3"></span>                        <span class="dot1"></span>                    </div>                    <div class="bottone5">                        <button type="submit" class="myButton5">ACQUISTA</button>                    </div>                </div>            </form>        </div>        <!-- STEP 3 - RINGRAZIAMENTO ACQUISTO, svuoto carrello -->        <div *ngSwitchCase="3">            <div>                <h1 class="thanks">Grazie per l\'acquisto </h1>                <h3 class="thanks">Le abbiamo inviato una mail di resoconto </h3>                <div class="footer">                    <div class="bottone-logout">                        <button (click)="logout()" class="myButton4"> LOGOUT </button>                    </div>                    <div class="bottone-home">                        <button (click)="deleteCurrentCart()" routerLink="/home" class="myButton5"> HOME </button>                    </div>                </div>            </div>        </div>    </div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CustomizeComponent', 'selector': 'app-customize'},{'name': 'CustomizeFormComponent', 'selector': 'app-customize-form'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputTextComponent', 'selector': 'app-input-text'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'SignupComponent', 'selector': 'app-signup'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CartComponent'};

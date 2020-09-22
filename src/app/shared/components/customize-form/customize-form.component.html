@@ -10,7 +10,7 @@
             <div class="content">
                 <!-- Name -->
                 <div class="text">
-                    <p> {{clothes.name}} </p>
+                    <h2> {{clothes.name}} </h2>
                 </div>
                
             
@@ -51,18 +51,12 @@
                     <input type="radio" value="black" formControlName="textColor" checked>
                     <span class="checkmark-black"></span>
                 </label> <br>
-                
-                <!-- Button confirmation -->
-                <!-- <button (click)="cancel()" type="button">Annulla</button> -->
-                <!-- <button type="submit" [disabled]="clothesForm.invalid">Conferma</button> -->
 
                 <div class="div-button">
                     <div class="bottone">
-                        <!-- <a class="myButton">AGGIUNGI AL CARRELLO</a> -->
                         <button class="myButton" type="submit" >VAI AL CARRELLO</button>
                     </div>
                     <div class="bottone2">
-                        <!-- <a class="myButton2">RIPRISTINA</a> -->
                         <button class="myButton2" (click)="cancel()" type="button">RIPRISTINA</button>
                     </div>
                 </div>

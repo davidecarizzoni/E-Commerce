@@ -669,7 +669,7 @@ export class CustomizeFormComponent implements OnInit {
             &lt;div class&#x3D;&quot;content&quot;&gt;
                 &lt;!-- Name --&gt;
                 &lt;div class&#x3D;&quot;text&quot;&gt;
-                    &lt;p&gt; {{clothes.name}} &lt;/p&gt;
+                    &lt;h2&gt; {{clothes.name}} &lt;/h2&gt;
                 &lt;/div&gt;
                
             
@@ -710,18 +710,12 @@ export class CustomizeFormComponent implements OnInit {
                     &lt;input type&#x3D;&quot;radio&quot; value&#x3D;&quot;black&quot; formControlName&#x3D;&quot;textColor&quot; checked&gt;
                     &lt;span class&#x3D;&quot;checkmark-black&quot;&gt;&lt;/span&gt;
                 &lt;/label&gt; &lt;br&gt;
-                
-                &lt;!-- Button confirmation --&gt;
-                &lt;!-- &lt;button (click)&#x3D;&quot;cancel()&quot; type&#x3D;&quot;button&quot;&gt;Annulla&lt;/button&gt; --&gt;
-                &lt;!-- &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;clothesForm.invalid&quot;&gt;Conferma&lt;/button&gt; --&gt;
 
                 &lt;div class&#x3D;&quot;div-button&quot;&gt;
                     &lt;div class&#x3D;&quot;bottone&quot;&gt;
-                        &lt;!-- &lt;a class&#x3D;&quot;myButton&quot;&gt;AGGIUNGI AL CARRELLO&lt;/a&gt; --&gt;
                         &lt;button class&#x3D;&quot;myButton&quot; type&#x3D;&quot;submit&quot; &gt;VAI AL CARRELLO&lt;/button&gt;
                     &lt;/div&gt;
                     &lt;div class&#x3D;&quot;bottone2&quot;&gt;
-                        &lt;!-- &lt;a class&#x3D;&quot;myButton2&quot;&gt;RIPRISTINA&lt;/a&gt; --&gt;
                         &lt;button class&#x3D;&quot;myButton2&quot; (click)&#x3D;&quot;cancel()&quot; type&#x3D;&quot;button&quot;&gt;RIPRISTINA&lt;/button&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
@@ -745,7 +739,7 @@ export class CustomizeFormComponent implements OnInit {
     background-image: linear-gradient(90deg, rgba(129, 210, 248, 1), rgba(193, 129, 255, 1) 100%);
 }
 .content{
-    padding-top: 50px;
+    padding-top: 25px;
 }
 
 .product {
@@ -867,16 +861,6 @@ export class CustomizeFormComponent implements OnInit {
         display: inline-block;
       }
 
-      .checkmark-green {
-        margin-right: 20px;
-        height: 35px;
-        width: 35px;   
-        cursor: pointer;
-        border: 1px solid gray;
-        background-color: lightseagreen;
-        border-radius: 50%;
-        display: inline-block;
-      }
 
       .checkmark-orange {
         margin-right: 18px;
@@ -890,20 +874,24 @@ export class CustomizeFormComponent implements OnInit {
       }
       
       .container input:checked ~ .checkmark-white {
-        border:1px solid rgb(193, 129, 255);
+        border:3px solid rgb(193, 129, 255);
         }
       }
 
+      .container input:checked ~ .checkmark-red {
+        border:3px solid rgb(193, 129, 255);
+        }
+
       .container input:checked ~ .checkmark-black {
-        border:1px solid rgb(193, 129, 255);
+        border:3px solid rgb(193, 129, 255);
       }
 
       .container input:checked ~ .checkmark-orange {
-        border:1px solid rgb(193, 129, 255);
+        border:3px solid rgb(193, 129, 255);
       }
 
-      .container input:checked ~ .checkmark-green {
-        border:1px solid rgb(193, 129, 255);
+      .container input:checked ~ .checkmark-gray {
+        border:3px solid rgb(193, 129, 255);
       }
       
       .checkmark:after {
@@ -931,14 +919,14 @@ export class CustomizeFormComponent implements OnInit {
 
      //BUTTON
     .div-button{
-        padding-right: 25px;
+        padding-right: 26px;
     }
 
     .bottone {
         right: 2px;
         padding: 15px;
         margin-right: 20px;
-        padding-top: 25px;
+        padding-top: 20px;
         float: right;
         position: relative;
     }
@@ -959,9 +947,11 @@ export class CustomizeFormComponent implements OnInit {
     .myButton:active {
         position: relative;
         top: 1px;
+        border: none;
     }
+  
     .bottone2 {
-        padding-top:25px;
+        padding-top:20px;
         padding-left: 15px;
         padding-bottom: 20px;
         // top: 30px;
@@ -1018,7 +1008,7 @@ export class CustomizeFormComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><!-- Ok, da sistemare cambio colore della maglia. Per il resto OK --><div class="background">    <div class="product">        <form [formGroup]="clothesForm" (ngSubmit)="confirmChanges()" ngNativeValidate>            <img src="{{imgPath}}" class="img">            <div class="content">                <!-- Name -->                <div class="text">                    <p> {{clothes.name}} </p>                </div>                                           <!-- Color -->                    <label class="container">                        <input type="radio" value="red" formControlName="color" >                        <span class="checkmark-red" (click)="setPathImage(\'red\')"></span>                    </label>                    <label class="container">                        <input type="radio" value="black" formControlName="color">                        <span class="checkmark-black" (click)="setPathImage(\'black\')"></span>                    </label>                    <label class="container">                        <input type="radio" value="grey" formControlName="color">                        <span class="checkmark-gray" (click)="setPathImage(\'grey\')"></span>                    </label>                    <label class="container">                        <input type="radio" value="orange" formControlName="color">                        <span class="checkmark-orange" (click)="setPathImage(\'orange\')"></span>                    </label>                    <!-- Text -->                <div class="text">                    <input type="text" class="name" formControlName="text" placeholder="Testo personalizzato" required>                 </div>                                            <!-- Text color -->                <label class="container">                    <input type="radio" value="white" formControlName="textColor">                    <span class="checkmark-white"></span>                </label>                <label class="container">                    <input type="radio" value="black" formControlName="textColor" checked>                    <span class="checkmark-black"></span>                </label> <br>                                <!-- Button confirmation -->                <!-- <button (click)="cancel()" type="button">Annulla</button> -->                <!-- <button type="submit" [disabled]="clothesForm.invalid">Conferma</button> -->                <div class="div-button">                    <div class="bottone">                        <!-- <a class="myButton">AGGIUNGI AL CARRELLO</a> -->                        <button class="myButton" type="submit" >VAI AL CARRELLO</button>                    </div>                    <div class="bottone2">                        <!-- <a class="myButton2">RIPRISTINA</a> -->                        <button class="myButton2" (click)="cancel()" type="button">RIPRISTINA</button>                    </div>                </div>            </div>                   </form>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><!-- Ok, da sistemare cambio colore della maglia. Per il resto OK --><div class="background">    <div class="product">        <form [formGroup]="clothesForm" (ngSubmit)="confirmChanges()" ngNativeValidate>            <img src="{{imgPath}}" class="img">            <div class="content">                <!-- Name -->                <div class="text">                    <h2> {{clothes.name}} </h2>                </div>                                           <!-- Color -->                    <label class="container">                        <input type="radio" value="red" formControlName="color" >                        <span class="checkmark-red" (click)="setPathImage(\'red\')"></span>                    </label>                    <label class="container">                        <input type="radio" value="black" formControlName="color">                        <span class="checkmark-black" (click)="setPathImage(\'black\')"></span>                    </label>                    <label class="container">                        <input type="radio" value="grey" formControlName="color">                        <span class="checkmark-gray" (click)="setPathImage(\'grey\')"></span>                    </label>                    <label class="container">                        <input type="radio" value="orange" formControlName="color">                        <span class="checkmark-orange" (click)="setPathImage(\'orange\')"></span>                    </label>                    <!-- Text -->                <div class="text">                    <input type="text" class="name" formControlName="text" placeholder="Testo personalizzato" required>                 </div>                                            <!-- Text color -->                <label class="container">                    <input type="radio" value="white" formControlName="textColor">                    <span class="checkmark-white"></span>                </label>                <label class="container">                    <input type="radio" value="black" formControlName="textColor" checked>                    <span class="checkmark-black"></span>                </label> <br>                <div class="div-button">                    <div class="bottone">                        <button class="myButton" type="submit" >VAI AL CARRELLO</button>                    </div>                    <div class="bottone2">                        <button class="myButton2" (click)="cancel()" type="button">RIPRISTINA</button>                    </div>                </div>            </div>                   </form>    </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CustomizeComponent', 'selector': 'app-customize'},{'name': 'CustomizeFormComponent', 'selector': 'app-customize-form'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputTextComponent', 'selector': 'app-input-text'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'SignupComponent', 'selector': 'app-signup'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CustomizeFormComponent'};

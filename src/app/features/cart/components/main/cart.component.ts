@@ -78,11 +78,16 @@ export class CartComponent implements OnInit {
     this.store.dispatch(initCart({cart}));
   }
 
-  submitForm(){
-    console.log(this.shippingForm.value)
+  deleteCurrentCart(){
+    let cart: CartItem[] = [];
+    this.store.dispatch(initCart({cart}));
   }
 
-  // Da mettere in un servcice
+  submitForm(){
+    console.log("Shipping for submitted" + this.shippingForm.value)
+  }
+
+  
   sendEmail(){
     let message:string="Hai acquistato sullo store di Davide\n Prezzo: "+ this.totPrice+ "\n";
     let indirizzo = this.shippingForm.get('indirizzo').value;
@@ -98,8 +103,9 @@ export class CartComponent implements OnInit {
     message+= "Shipping detail:\n"
     message+= "Indirizzo: "+ indirizzo +" Città: "+ città +" CAP:" + CAP;
     
-    this.router.navigateByUrl('/home');
-
+    //this.router.navigateByUrl('/home');
+    this.next();
+    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.sendMail('https://formspree.io/xvovoaow',
         { name: user, replyto: 'davidecarizzoni@gmail.com', message: message},
@@ -108,5 +114,11 @@ export class CartComponent implements OnInit {
             console.log(response+" risposta");
           }
         );
+    
+  }
+
+  logout(){
+    sessionStorage.setItem("user", '');
+    this.router.navigateByUrl('/login');
   }
 }
