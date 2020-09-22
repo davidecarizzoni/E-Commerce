@@ -951,19 +951,25 @@ export class CartComponent implements OnInit {
 
   // Da mettere in un servcice
   sendEmail(){
-    let msg:string&#x3D;&quot;Hai acquistato sullo store di Davide\n Prezzo: &quot;+ this.totPrice+ &quot;\n&quot;;
-    msg+&#x3D;&quot; Prodotti:\n&quot;
+    let message:string&#x3D;&quot;Hai acquistato sullo store di Davide\n Prezzo: &quot;+ this.totPrice+ &quot;\n&quot;;
+    let indirizzo &#x3D; this.shippingForm.get(&#x27;indirizzo&#x27;).value;
+    let città &#x3D; this.shippingForm.get(&#x27;città&#x27;).value;
+    let CAP &#x3D; this.shippingForm.get(&#x27;cap&#x27;).value;
+    let user &#x3D; this.shippingForm.get(&#x27;nome&#x27;).value;
+    
+    message+&#x3D;&quot;Cart detail:\n&quot;
     this.cart.forEach(cartItem &#x3D;&gt; {
-      msg+&#x3D; cartItem.name +&quot; &quot;+ cartItem.color +&quot; &quot;+ cartItem.price +&quot;\n&quot;;
+      message+&#x3D; cartItem.name +&quot; &quot;+ cartItem.color +&quot; &quot;+ cartItem.price +&quot;\n&quot;;
     });
-    msg+&#x3D;&quot;Shipping:\n&quot;
-    msg+&#x3D;&quot;Indirizzo: &quot;+ this.shippingForm.get(&#x27;indirizzo&#x27;).value +&quot; Citta&quot;+&quot; &quot;+&quot;CAP&quot;;
+
+    message+&#x3D; &quot;Shipping detail:\n&quot;
+    message+&#x3D; &quot;Indirizzo: &quot;+ indirizzo +&quot; Città: &quot;+ città +&quot; CAP:&quot; + CAP;
     
     this.router.navigateByUrl(&#x27;/home&#x27;);
 
     const headers &#x3D; new HttpHeaders({ &#x27;Content-Type&#x27;: &#x27;application/json&#x27; });
     this.http.sendMail(&#x27;https://formspree.io/xvovoaow&#x27;,
-        { name: &quot;Davide&quot;, replyto: &#x27;davidecarizzoni@gmail.com&#x27;, message: msg},
+        { name: user, replyto: &#x27;davidecarizzoni@gmail.com&#x27;, message: message},
         { &#x27;headers&#x27;: headers }).subscribe(
           response &#x3D;&gt; {
             console.log(response+&quot; risposta&quot;);
@@ -1018,9 +1024,9 @@ export class CartComponent implements OnInit {
                         &lt;div class&#x3D;&quot;bottone2&quot; (click)&#x3D;&quot;remove(i,item.price)&quot;&gt;
                             &lt;a class&#x3D;&quot;myButton2&quot;&gt;RIMUOVI&lt;/a&gt;
                         &lt;/div&gt;
+                        &lt;hr&gt;
                     &lt;/div&gt;
                 &lt;/ng-container&gt;
-                &lt;hr&gt;
                 &lt;div class&#x3D;&quot;footer&quot;&gt;
                     &lt;p class&#x3D;&quot;totale&quot;&gt;TOTALE&lt;/p&gt;
                     &lt;p class&#x3D;&quot;prezzo&quot;&gt;{{totPrice}}€&lt;/p&gt;
@@ -1055,6 +1061,7 @@ export class CartComponent implements OnInit {
         &lt;!-- FORM - STEP 2 --&gt;
         &lt;div class&#x3D;&quot;step2&quot; *ngSwitchCase&#x3D;&quot;1&quot;&gt;
             &lt;form [formGroup]&#x3D;&quot;shippingForm&quot; (ngSubmit)&#x3D;&quot;next();submitForm()&quot; ngNativeValidate&gt;
+                &lt;br&gt;
                 &lt;div&gt;
                     &lt;label for&#x3D;&quot;nome&quot; class&#x3D;&quot;label&quot;&gt;Nome&lt;/label&gt;
                     &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;nome&quot; class&#x3D;&quot;form&quot; formControlName&#x3D;&quot;nome&quot; required&gt;
@@ -1068,15 +1075,15 @@ export class CartComponent implements OnInit {
                     &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;nome&quot; class&#x3D;&quot;form&quot; formControlName&#x3D;&quot;cellulare&quot; required&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;inline&quot;&gt;
-                    &lt;label for&#x3D;&quot;nome&quot; class&#x3D;&quot;label&quot;&gt;Citta&lt;/label&gt;
+                    &lt;label for&#x3D;&quot;nome&quot; class&#x3D;&quot;label&quot;&gt;Città&lt;/label&gt;
                     &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;nome&quot; class&#x3D;&quot;form2&quot; formControlName&#x3D;&quot;città&quot; required&gt;
-                    &lt;label for&#x3D;&quot;nome&quot; class&#x3D;&quot;label&quot;&gt;Cap&lt;/label&gt;
+                    &lt;label for&#x3D;&quot;nome&quot; class&#x3D;&quot;label&quot;&gt;CAP&lt;/label&gt;
                     &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;nome&quot; class&#x3D;&quot;form2&quot; formControlName&#x3D;&quot;cap&quot; maxlength&#x3D;&quot;5&quot; required&gt;
                 &lt;/div&gt;
                 &lt;div&gt;
                     &lt;label for&#x3D;&quot;nome&quot; class&#x3D;&quot;label&quot;&gt;Indirizzo&lt;/label&gt;
                     &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;nome&quot; class&#x3D;&quot;form3&quot; formControlName&#x3D;&quot;indirizzo&quot; required&gt;
-                    &lt;label for&#x3D;&quot;nome&quot; class&#x3D;&quot;label&quot;&gt;N&lt;/label&gt;
+                    &lt;label for&#x3D;&quot;nome&quot; class&#x3D;&quot;label&quot;&gt;N°&lt;/label&gt;
                     &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;nome&quot; class&#x3D;&quot;form4&quot; formControlName&#x3D;&quot;n&quot; required&gt;
                 &lt;/div&gt;
                 &lt;div&gt;
@@ -1094,7 +1101,7 @@ export class CartComponent implements OnInit {
                         &lt;span class&#x3D;&quot;dot3&quot;&gt;&lt;/span&gt;
                     &lt;/div&gt;
                     &lt;div class&#x3D;&quot;bottone5&quot;&gt;
-                        &lt;button  [disabled]&#x3D;&quot;shippingForm.invalid&quot; type&#x3D;&quot;submit&quot; class&#x3D;&quot;myButton5&quot;&gt; PROSEGUI &lt;/button&gt;
+                        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;myButton5&quot;&gt; PROSEGUI &lt;/button&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/form&gt;
@@ -1112,11 +1119,12 @@ export class CartComponent implements OnInit {
                     &lt;p&gt;Spedito al sig&lt;/p&gt;
                 &lt;/div&gt;
                 &lt;div class&#x3D;&quot;descrizione2&quot;&gt;
-                    &lt;p&gt; {{cartItem | async}}.length &lt;/p&gt;
+                    &lt;p&gt; {{ (cartItem | async).length}} &lt;/p&gt;
                     &lt;p&gt; {{totPrice}}€ &lt;/p&gt;
-                    &lt;p&gt; {{cartItem | async}}.length * 0.8&lt;/p&gt;
-                    &lt;p&gt; ddd &lt;/p&gt;
-                    &lt;p&gt;nulla&lt;/p&gt;
+                    &lt;!-- &lt;p&gt; {{ (cartItem | async).length  * 0.8}} €&lt;/p&gt; --&gt;
+                    &lt;p&gt; Gratis &lt;/p&gt; &lt;!-- Da implementare logiche sugli sconti dopo tot prodotti aquistati--&gt;
+                    &lt;p&gt; {{this.shippingForm.get(&#x27;indirizzo&#x27;).value}} &lt;/p&gt;
+                    &lt;p&gt; {{this.shippingForm.get(&#x27;nome&#x27;).value}} {{this.shippingForm.get(&#x27;cognome&#x27;).value}}  &lt;/p&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
             &lt;form [formGroup]&#x3D;&quot;paymentForm&quot; (ngSubmit)&#x3D;&quot;sendEmail()&quot;&gt;
@@ -1249,7 +1257,7 @@ export class CartComponent implements OnInit {
     }
     .img {
         padding: 20px;
-        height: 150px;
+        height: 180px;
         width: 150px;
         float: left;
     }
@@ -1443,12 +1451,12 @@ export class CartComponent implements OnInit {
         margin-bottom: -30px;
         position: absolute;
         margin-left: 25px;
-        color: gray;
+        color: rgb(90, 90, 90);
     }
     .form {
         width: 94%;
         height: 40px;
-        background-color: rgb(242, 242, 242);
+        background-color: rgb(243,230,255);
         border: none;
         margin-left: 3%;
         margin-bottom: 15px;
@@ -1459,7 +1467,7 @@ export class CartComponent implements OnInit {
     .form2 {
         width: 45%;
         height: 40px;
-        background-color: rgb(242, 242, 242);
+        background-color: rgb(243,230,255);
         border: none;
         margin-left: 3%;
         margin-bottom: 15px;
@@ -1473,7 +1481,7 @@ export class CartComponent implements OnInit {
     .form3 {
         width: 80%;
         height: 40px;
-        background-color: rgb(242, 242, 242);
+        background-color: rgb(243,230,255);
         border: none;
         margin-left: 3%;
         margin-bottom: 15px;
@@ -1484,7 +1492,7 @@ export class CartComponent implements OnInit {
     .form4 {
         width: 10%;
         height: 40px;
-        background-color: rgb(242, 242, 242);
+        background-color:rgb(243,230,255);
         border: none;
         margin-left: 3%;
         margin-bottom: 15px;
@@ -1509,7 +1517,7 @@ export class CartComponent implements OnInit {
     .form5 {
         width: 70%;
         height: 40px;
-        background-color: rgb(242, 242, 242);
+        background-color: rgb(243,230,255);
         border: none;
         margin-left: 3%;
         margin-bottom: 15px;
@@ -1520,7 +1528,7 @@ export class CartComponent implements OnInit {
     .form6 {
         width: 20%;
         height: 40px;
-        background-color: rgb(242, 242, 242);
+        background-color: rgb(243,230,255);
         border: none;
         margin-left: 3%;
         margin-bottom: 15px;
@@ -1534,10 +1542,8 @@ export class CartComponent implements OnInit {
 }
 
 .cartItem{
-    // width: 100%;
-   
-    height: 250px;
-    padding-bottom: 20px;
+    height: auto;
+    padding-bottom: 5px;
 }
 
 .emptyCart{
@@ -1570,7 +1576,7 @@ export class CartComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="header">    <div class="home" routerLink="/home">        <img src="../../../assets/icone/home.png" alt="home" class="house">        <p class="scritta">Home</p>    </div>    <ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)">             <p class="title">Carrello ({{ (cartItem | async).length}})</p>          </ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)">            <p class="title">Carrello Vuoto</p>        </ng-container >    </ng-container>     </div><div class="background">        <div class="product" [ngSwitch]="prosegui">                <!-- PRODOTTI - STEP 1-->        <div *ngSwitchCase="0">            <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0); else emptyCart">                <ng-container *ngFor=" let i = index;let item of cartItem | async;">                    <div class="cartItem">                        <img [src]="\'/assets/product/\'+item.id+\'_\'+item.color+\'.jpg\'" class="img" alt="img_prodotto">                        <p class="costo"> {{item.price}} €</p>                        <div class="resoconto">                            <p>Prodotto</p>                            <p>Colore</p>                            <p>Testo</p>                            <p>Colore Testo</p>                        </div>                        <div class="descrizione">                            <p>{{item.name | titlecase }}</p>                            <p>{{item.color | titlecase}}</p>                            <p>{{item.text | titlecase}}</p>                            <p>{{item.textColor | titlecase}}</p>                            </div>                        <div class="bottone2" (click)="remove(i,item.price)">                            <a class="myButton2">RIMUOVI</a>                        </div>                    </div>                </ng-container>                <hr>                <div class="footer">                    <p class="totale">TOTALE</p>                    <p class="prezzo">{{totPrice}}€</p>                    <div class="dots">                        <span class="dot1"></span>                        <span class="dot2"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone3">                        <a class="myButton3" (click)="next()">PROSEGUI</a>                    </div>                </div>            </ng-container>            <ng-template #emptyCart>                <h1 class="emptyCart">Carrello vuoto</h1>                <div class="footer">                    <p class="totale">TOTALE</p>                    <p class="prezzo"> / </p>                    <div class="dots">                        <span class="dot1"></span>                        <span class="dot2"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone3">                        <a class="myButton3" disabled routerLink="/home"> HOME </a>                    </div>                </div>            </ng-template>        </div>        <!-- FORM - STEP 2 -->        <div class="step2" *ngSwitchCase="1">            <form [formGroup]="shippingForm" (ngSubmit)="next();submitForm()" ngNativeValidate>                <div>                    <label for="nome" class="label">Nome</label>                    <input type="text" id="nome" class="form" formControlName="nome" required>                </div>                <div>                    <label for="nome" class="label">Cognome</label>                    <input type="text" id="nome" class="form" formControlName="cognome" required>                </div>                <div>                    <label for="nome" class="label">Cellulare</label>                    <input type="text" id="nome" class="form" formControlName="cellulare" required>                </div>                <div class="inline">                    <label for="nome" class="label">Citta</label>                    <input type="text" id="nome" class="form2" formControlName="città" required>                    <label for="nome" class="label">Cap</label>                    <input type="text" id="nome" class="form2" formControlName="cap" maxlength="5" required>                </div>                <div>                    <label for="nome" class="label">Indirizzo</label>                    <input type="text" id="nome" class="form3" formControlName="indirizzo" required>                    <label for="nome" class="label">N</label>                    <input type="text" id="nome" class="form4" formControlName="n" required>                </div>                <div>                    <label for="nome" class="label">Informazioni per corriere</label>                    <input type="text" id="nome" class="form" formControlName="information" required maxlength="50">                </div>                <hr>                <div class="footer">                    <div class="bottone4">                        <a class="myButton4" (click)="back()"> INDIETRO </a>                    </div>                    <div class="dots2">                        <span class="dot2"></span>                        <span class="dot1"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone5">                        <button  [disabled]="shippingForm.invalid" type="submit" class="myButton5"> PROSEGUI </button>                    </div>                </div>            </form>                   </div>        <!-- PAGAMENTO - STEP 2 -->        <div *ngSwitchCase="2">            <div class="prodotti">                <div class="resoconto2">                    <p>Prodotti acquistati</p>                    <p>Prezzo</p>                    <p>Spedizione</p>                    <p>Indirizzo</p>                    <p>Spedito al sig</p>                </div>                <div class="descrizione2">                    <p> {{cartItem | async}}.length </p>                    <p> {{totPrice}}€ </p>                    <p> {{cartItem | async}}.length * 0.8</p>                    <p> ddd </p>                    <p>nulla</p>                </div>            </div>            <form [formGroup]="paymentForm" (ngSubmit)="sendEmail()">                <div>                    <label for="nome" class="label">Seleziona metodo di pagamento</label>                    <select name="nome" id="nome" class="form" formControlName="carta">                            <option value="cartaCredito" class="option">Carta di credito</option>                            <option value="cartaDebito" class="option">Carta di debito</option>                            <option value="cartaPrepagata" class="option">Carta prepagata</option>                    </select>                </div>                <div>                    <label for="nome" class="label">Tipo carta</label>                    <select name="nome" id="nome" class="form" formControlName="tipo">                        <option value="Visa" class="option">Visa</option>                        <option value="MasterCard" class="option">MasterCard</option>                        <option value="Maestro" class="option">Maestro</option>                    </select>                </div>                <div>                    <label for="nome" class="label">Numero carta</label>                    <input id="nome" class="form5" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="numero">                    <label for="nome" class="label">CVC</label>                    <input type="text" id="nome" class="form6" formControlName="CVC">                </div>                <hr>                <div class="footer">                    <div class="bottone4">                        <button type="button" class="myButton4" (click)="back()">INDIETRO</button>                    </div>                    <div class="dots2">                        <span class="dot2"></span>                        <span class="dot3"></span>                        <span class="dot1"></span>                    </div>                    <div class="bottone5">                        <button type="submit" class="myButton5">ACQUISTA</button>                    </div>                </div>            </form>                    </div>    </div>   <!--     <div>        </ng-container>           </div> --></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="header">    <div class="home" routerLink="/home">        <img src="../../../assets/icone/home.png" alt="home" class="house">        <p class="scritta">Home</p>    </div>    <ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)">             <p class="title">Carrello ({{ (cartItem | async).length}})</p>          </ng-container>        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)">            <p class="title">Carrello Vuoto</p>        </ng-container >    </ng-container>     </div><div class="background">        <div class="product" [ngSwitch]="prosegui">                <!-- PRODOTTI - STEP 1-->        <div *ngSwitchCase="0">            <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0); else emptyCart">                <ng-container *ngFor=" let i = index;let item of cartItem | async;">                    <div class="cartItem">                        <img [src]="\'/assets/product/\'+item.id+\'_\'+item.color+\'.jpg\'" class="img" alt="img_prodotto">                        <p class="costo"> {{item.price}} €</p>                        <div class="resoconto">                            <p>Prodotto</p>                            <p>Colore</p>                            <p>Testo</p>                            <p>Colore Testo</p>                        </div>                        <div class="descrizione">                            <p>{{item.name | titlecase }}</p>                            <p>{{item.color | titlecase}}</p>                            <p>{{item.text | titlecase}}</p>                            <p>{{item.textColor | titlecase}}</p>                            </div>                        <div class="bottone2" (click)="remove(i,item.price)">                            <a class="myButton2">RIMUOVI</a>                        </div>                        <hr>                    </div>                </ng-container>                <div class="footer">                    <p class="totale">TOTALE</p>                    <p class="prezzo">{{totPrice}}€</p>                    <div class="dots">                        <span class="dot1"></span>                        <span class="dot2"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone3">                        <a class="myButton3" (click)="next()">PROSEGUI</a>                    </div>                </div>            </ng-container>            <ng-template #emptyCart>                <h1 class="emptyCart">Carrello vuoto</h1>                <div class="footer">                    <p class="totale">TOTALE</p>                    <p class="prezzo"> / </p>                    <div class="dots">                        <span class="dot1"></span>                        <span class="dot2"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone3">                        <a class="myButton3" disabled routerLink="/home"> HOME </a>                    </div>                </div>            </ng-template>        </div>        <!-- FORM - STEP 2 -->        <div class="step2" *ngSwitchCase="1">            <form [formGroup]="shippingForm" (ngSubmit)="next();submitForm()" ngNativeValidate>                <br>                <div>                    <label for="nome" class="label">Nome</label>                    <input type="text" id="nome" class="form" formControlName="nome" required>                </div>                <div>                    <label for="nome" class="label">Cognome</label>                    <input type="text" id="nome" class="form" formControlName="cognome" required>                </div>                <div>                    <label for="nome" class="label">Cellulare</label>                    <input type="text" id="nome" class="form" formControlName="cellulare" required>                </div>                <div class="inline">                    <label for="nome" class="label">Città</label>                    <input type="text" id="nome" class="form2" formControlName="città" required>                    <label for="nome" class="label">CAP</label>                    <input type="text" id="nome" class="form2" formControlName="cap" maxlength="5" required>                </div>                <div>                    <label for="nome" class="label">Indirizzo</label>                    <input type="text" id="nome" class="form3" formControlName="indirizzo" required>                    <label for="nome" class="label">N°</label>                    <input type="text" id="nome" class="form4" formControlName="n" required>                </div>                <div>                    <label for="nome" class="label">Informazioni per corriere</label>                    <input type="text" id="nome" class="form" formControlName="information" required maxlength="50">                </div>                <hr>                <div class="footer">                    <div class="bottone4">                        <a class="myButton4" (click)="back()"> INDIETRO </a>                    </div>                    <div class="dots2">                        <span class="dot2"></span>                        <span class="dot1"></span>                        <span class="dot3"></span>                    </div>                    <div class="bottone5">                        <button type="submit" class="myButton5"> PROSEGUI </button>                    </div>                </div>            </form>                   </div>        <!-- PAGAMENTO - STEP 2 -->        <div *ngSwitchCase="2">            <div class="prodotti">                <div class="resoconto2">                    <p>Prodotti acquistati</p>                    <p>Prezzo</p>                    <p>Spedizione</p>                    <p>Indirizzo</p>                    <p>Spedito al sig</p>                </div>                <div class="descrizione2">                    <p> {{ (cartItem | async).length}} </p>                    <p> {{totPrice}}€ </p>                    <!-- <p> {{ (cartItem | async).length  * 0.8}} €</p> -->                    <p> Gratis </p> <!-- Da implementare logiche sugli sconti dopo tot prodotti aquistati-->                    <p> {{this.shippingForm.get(\'indirizzo\').value}} </p>                    <p> {{this.shippingForm.get(\'nome\').value}} {{this.shippingForm.get(\'cognome\').value}}  </p>                </div>            </div>            <form [formGroup]="paymentForm" (ngSubmit)="sendEmail()">                <div>                    <label for="nome" class="label">Seleziona metodo di pagamento</label>                    <select name="nome" id="nome" class="form" formControlName="carta">                            <option value="cartaCredito" class="option">Carta di credito</option>                            <option value="cartaDebito" class="option">Carta di debito</option>                            <option value="cartaPrepagata" class="option">Carta prepagata</option>                    </select>                </div>                <div>                    <label for="nome" class="label">Tipo carta</label>                    <select name="nome" id="nome" class="form" formControlName="tipo">                        <option value="Visa" class="option">Visa</option>                        <option value="MasterCard" class="option">MasterCard</option>                        <option value="Maestro" class="option">Maestro</option>                    </select>                </div>                <div>                    <label for="nome" class="label">Numero carta</label>                    <input id="nome" class="form5" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="numero">                    <label for="nome" class="label">CVC</label>                    <input type="text" id="nome" class="form6" formControlName="CVC">                </div>                <hr>                <div class="footer">                    <div class="bottone4">                        <button type="button" class="myButton4" (click)="back()">INDIETRO</button>                    </div>                    <div class="dots2">                        <span class="dot2"></span>                        <span class="dot3"></span>                        <span class="dot1"></span>                    </div>                    <div class="bottone5">                        <button type="submit" class="myButton5">ACQUISTA</button>                    </div>                </div>            </form>                    </div>    </div>   <!--     <div>        </ng-container>           </div> --></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CustomizeComponent', 'selector': 'app-customize'},{'name': 'CustomizeFormComponent', 'selector': 'app-customize-form'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputTextComponent', 'selector': 'app-input-text'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'SignupComponent', 'selector': 'app-signup'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CartComponent'};

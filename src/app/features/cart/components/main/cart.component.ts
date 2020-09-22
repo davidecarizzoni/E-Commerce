@@ -84,19 +84,25 @@ export class CartComponent implements OnInit {
 
   // Da mettere in un servcice
   sendEmail(){
-    let msg:string="Hai acquistato sullo store di Davide\n Prezzo: "+ this.totPrice+ "\n";
-    msg+=" Prodotti:\n"
+    let message:string="Hai acquistato sullo store di Davide\n Prezzo: "+ this.totPrice+ "\n";
+    let indirizzo = this.shippingForm.get('indirizzo').value;
+    let città = this.shippingForm.get('città').value;
+    let CAP = this.shippingForm.get('cap').value;
+    let user = this.shippingForm.get('nome').value;
+    
+    message+="Cart detail:\n"
     this.cart.forEach(cartItem => {
-      msg+= cartItem.name +" "+ cartItem.color +" "+ cartItem.price +"\n";
+      message+= cartItem.name +" "+ cartItem.color +" "+ cartItem.price +"\n";
     });
-    msg+="Shipping:\n"
-    msg+="Indirizzo: "+ this.shippingForm.get('indirizzo').value +" Citta"+" "+"CAP";
+
+    message+= "Shipping detail:\n"
+    message+= "Indirizzo: "+ indirizzo +" Città: "+ città +" CAP:" + CAP;
     
     this.router.navigateByUrl('/home');
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http.sendMail('https://formspree.io/xvovoaow',
-        { name: "Davide", replyto: 'davidecarizzoni@gmail.com', message: msg},
+        { name: user, replyto: 'davidecarizzoni@gmail.com', message: message},
         { 'headers': headers }).subscribe(
           response => {
             console.log(response+" risposta");
