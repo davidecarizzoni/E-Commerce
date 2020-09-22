@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
+import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/core/model/cart-item.interface';
 import { getCartItem } from 'src/app/redux/cart';
-import { removeItemToCartById } from 'src/app/redux/cart/cart.action';
+import { initCart } from 'src/app/redux/cart/cart.action';
 
 @Component({
   selector: 'app-cart',
@@ -15,11 +14,9 @@ import { removeItemToCartById } from 'src/app/redux/cart/cart.action';
 export class CartComponent implements OnInit {
 
   prosegui: number;
-  imgPath: string;
   shippingForm: FormGroup;
   paymentForm: FormGroup;
-
-  @Input() img: string;
+  cart: CartItem[];
 
   get cartItem(): Observable<CartItem[]> {
     return this.store.pipe(select(getCartItem));
@@ -46,45 +43,32 @@ export class CartComponent implements OnInit {
 
   }
 
-
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.prosegui= 0;
+    this.cartItem.forEach(cartItems => {
+      this.cart = cartItems;
+    });
   }
 
-  next(){
-    this.prosegui+= 1;
-    console.log(this.prosegui)
+  next(){ this.prosegui+= 1; }
+  back(){ this.prosegui-= 1; }
+
+
+  remove(id:number){
+    console.log(id)
+    var copy = Array.from(this.cart);
+    const index = copy.findIndex(x=> x.id=== id);
+    copy.splice(index,1);
+    this.cart = copy;
+    this.updateCart(this.cart);
   }
 
-  back(){
-    this.prosegui-= 1;
-    console.log(this.prosegui)
-  }
 
-  remove(id: number){
-    this.store.dispatch(removeItemToCartById({id}));
+  updateCart(cart: CartItem[] ){
+    this.store.dispatch(initCart({cart}));
   }
 
   submitForm(){
     console.log(this.shippingForm.value)
   }
-
-  getImagePath(id: number, color: string){
-    switch(id){
-      case 0:
-        console.log(color);
-        this.imgPath =  "/assets/product/maglietta_" + color + ".jpg";
-        console.log("case 0" + this.imgPath);
-        break;
-      case 1:
-        this.imgPath =  "/assets/product/pantaloncini_" + color + ".jpg";
-        console.log("case 1");
-        break;
-      case 2:
-        this.imgPath =  "/assets/product/felpa" + color + ".jpg";
-        console.log("case 2");
-        break;
-      }
-  }
-
 }

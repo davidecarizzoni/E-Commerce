@@ -24,7 +24,7 @@
 
             <!-- Prodotti presenti nel carrello -->
             <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0); else emptyCart">
-                <ng-container *ngFor="let item of cartItem | async">
+                <ng-container *ngFor=" let i = index;let item of cartItem | async;">
                     <div class="cartItem">
                         <img [src]="'/assets/product/'+item.id+'_'+item.color+'.jpg'" class="img" alt="img_prodotto">
                         <p class="costo">€ 15</p>
@@ -40,8 +40,8 @@
                             <p>{{item.text}}</p>
                             <p>{{item.textColor}}</p>    
                         </div>
-                        <div class="bottone2">
-                            <a class="myButton2" (click)="remove(item.id)">RIMUOVI</a>
+                        <div class="bottone2" (click)="remove(i)">
+                            <a class="myButton2">RIMUOVI</a>
                         </div>
                     </div>
                 </ng-container>

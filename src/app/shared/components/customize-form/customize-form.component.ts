@@ -50,29 +50,11 @@ export class CustomizeFormComponent implements OnInit {
   }
 
   goToCustomize(id: number){
-    //console.log("Cutomize pressed -> " + id);
     this.router.navigate(['/customize', id-1]);
   }
 
   changeColor(color: string){
-    // if(this.clothes.id == 0){
-    //   this.imgPath = "/assets/product/maglietta_" + color + ".jpg";
-    //   this.clothesForm.controls['imgPath'].setValue({imgPath : this.imgPath})
-    //   //this.clothesForm.get('imgPath').setValue(this.imgPath);
-    // }
-
-    // else if(this.clothes.id == 1){
-    //   this.clothesForm.controls['imgPath'].setValue({imgPath : this.imgPath})
-    //   this.imgPath = "/assets/product/pantaloncini_" + color + ".jpg";
-    // }
-     
-    // else if(this.clothes.id == 2){
-    //   this.imgPath = "/assets/product/felpa_" + color + ".jpg";
-    //   this.clothesForm.controls['imgPath'].setValue({imgPath : this.imgPath})
-    // }
-
     this.imgPath = "/assets/product/" + this.clothes.id + "_" + color + ".jpg";
-     
   }
 
   confirmChanges() {
