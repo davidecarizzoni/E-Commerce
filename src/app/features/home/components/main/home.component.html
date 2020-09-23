@@ -2,10 +2,36 @@
     <div class="over">
         <!-- Aggiungere sezione items in cart -->
         <ng-container *ngIf="((cartItem | async) && (cartItem | async).length > 0)"> 
-            <p class="cart">CARRELLO ({{ (cartItem | async).length}})</p>  
+            <div class="popover__wrapper">
+                <p class="cart">CARRELLO ({{ (cartItem | async).length}})</p>  
+                <div class="popover__content">
+                    <div class="popover__message"> 
+                        <ng-container *ngFor="let i=index;let item of cartItem | async;">
+                            <div>
+                                <p class="item">Prodotto: {{item.name | titlecase }}</p>
+                                <p class="item">Colore: {{item.color | titlecase}}</p>
+                                <p class="item">Testo: {{item.text | titlecase}}</p>
+                                <p class="item4">Colore testo: {{item.textColor | titlecase}}</p>
+                                <div *ngIf="(cartItem | async).length == (i+1);else hr"></div>
+                                <ng-template #hr><hr></ng-template>
+                                
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
         </ng-container>
-        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)"> 
-            <p class="cart">CARRELLO</p>  
+        <ng-container *ngIf="((cartItem | async) && (cartItem | async).length == 0)">
+            <div class="popover__wrapper">
+                <p class="cart"> CARRELLO </p>
+                <div class="popover__content">
+                    <div>
+                        <div class="popover__message"> 
+                            <p>Carrello vuoto </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </ng-container>
         <img src="../../../assets/icone/cart.png" alt="carrello" class="carrello">
     </div>
