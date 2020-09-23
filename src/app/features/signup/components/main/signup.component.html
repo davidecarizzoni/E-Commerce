@@ -13,7 +13,7 @@
         <div>
             <img src="../assets/logo.png" alt="logo" class="logo">
             <p class="title">Sign up</p>
-            <input id="username" placeholder="Username" formControlName="username" class="inputFields" required minlength="8">
+            <input id="username" placeholder="Username" formControlName="username" class="inputFields" required minlength="5">
         </div>
         <div>
             <input formControlName="password" id="password" placeholder="Password" class="inputFieldsPassword" [type]="showPw ? 'text' : 'password'"required>
@@ -25,7 +25,7 @@
             </ng-container>
         </div>
         <br><br>
-        <button type="submit">
+        <button type="submit" id="button">
             <span>Sign up</span>
         </button>
     </form>

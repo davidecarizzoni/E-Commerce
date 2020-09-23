@@ -144,7 +144,7 @@
                     <p> {{this.shippingForm.get('nome').value}} {{this.shippingForm.get('cognome').value}}  </p>
                 </div>
             </div>
-            <form [formGroup]="paymentForm" (ngSubmit)="sendEmail()">
+            <form [formGroup]="paymentForm" (ngSubmit)="sendEmail()" ngNativeValidate>
                 <div>
                     <label for="nome" class="label">Seleziona metodo di pagamento</label>
                     <select name="nome" id="nome" class="form" formControlName="carta">
