@@ -194,6 +194,27 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/LoginRoutingModule.html" data-type="entity-link">LoginRoutingModule</a>
                             </li>
                             <li class="link">
+                                <a href="modules/PageNotFoundModule.html" data-type="entity-link">PageNotFoundModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-PageNotFoundModule-ba626b8801e9f1c8f1498f9fbe7929ab"' : 'data-target="#xs-components-links-module-PageNotFoundModule-ba626b8801e9f1c8f1498f9fbe7929ab"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PageNotFoundModule-ba626b8801e9f1c8f1498f9fbe7929ab"' :
+                                            'id="xs-components-links-module-PageNotFoundModule-ba626b8801e9f1c8f1498f9fbe7929ab"' }>
+                                            <li class="link">
+                                                <a href="components/PageNotFoundComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">PageNotFoundComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/PageNotFoundRoutingModule.html" data-type="entity-link">PageNotFoundRoutingModule</a>
+                            </li>
+                            <li class="link">
                                 <a href="modules/SharedModule.html" data-type="entity-link">SharedModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?

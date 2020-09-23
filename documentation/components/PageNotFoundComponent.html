@@ -35,7 +35,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>AppComponent</li>
+  <li>PageNotFoundComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,7 +61,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/app.component.ts</code>
+    <code>src/app/features/page-not-found/page-not-found.component.ts</code>
 </p>
 
 
@@ -91,19 +91,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-root</code></td>
+                <td class="col-md-9"><code>app-page-not-found</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./app.component.scss</code></td>
+                <td class="col-md-9"><code>./page-not-found.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./app.component.html</code></td>
+                <td class="col-md-9"><code>./page-not-found.component.html</code></td>
             </tr>
 
 
@@ -151,45 +151,15 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(store: Store)</code>
+<code>constructor()</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/app.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/features/page-not-found/page-not-found.component.ts:8</a></div>
                             </td>
                         </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>store</td>
-                                                  
-                                                        <td>
-                                                                    <code>Store</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
             </tbody>
         </table>
 </section>
@@ -225,8 +195,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/app.component.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">src/app/features/page-not-found/page-not-found.component.ts:12</a></div>
                 </td>
             </tr>
 
@@ -248,42 +218,170 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Store } from &#x27;@ngrx/store&#x27;;
-import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { initClothes, retrieveAllClothes } from &#x27;./redux/clothes/clothes.action&#x27;;
-import { retrieveAllUsers } from &#x27;./redux/users/users.action&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
 @Component({
-  selector: &#x27;app-root&#x27;,
-  templateUrl: &#x27;./app.component.html&#x27;,
-  styleUrls: [&#x27;./app.component.scss&#x27;]
+  selector: &#x27;app-page-not-found&#x27;,
+  templateUrl: &#x27;./page-not-found.component.html&#x27;,
+  styleUrls: [&#x27;./page-not-found.component.scss&#x27;]
 })
-export class AppComponent implements OnInit {
+export class PageNotFoundComponent implements OnInit {
 
-  //constructor(private todosServerService: TodosServerService, private store: Store) {}
-
-  //Il todosSererService non serve più con la creazione dell&#x27;effect
-  constructor(private store: Store) {}
+  constructor() { }
 
   ngOnInit(): void {
-    this.store.dispatch(retrieveAllUsers());
-    this.store.dispatch(retrieveAllClothes());
   }
-
 
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;page&quot;&gt;
+    &lt;div class&#x3D;&quot;content&quot;&gt;
+      &lt;h1&gt;404&lt;/h1&gt;
+      &lt;h2&gt;Page not found&lt;/h2&gt;
+      &lt;p&gt;I tried to catch some fog, but i mist&lt;/p&gt;
+      &lt;a routerLink&#x3D;&quot;/home&quot;&gt; &lt;strong&gt; RITORNA ALLA HOME &lt;/strong&gt;&lt;/a&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt;
+      &lt;a class&#x3D;&quot;second&quot; routerLink&#x3D;&quot;/login&quot;&gt; &lt;strong&gt; VAI ALLA LOGIN &lt;/strong&gt;&lt;/a&gt;
+    &lt;/div&gt;
+      &lt;img src&#x3D;&quot;http://www.supah.it/dribbble/008/008.jpg&quot; /&gt;
+  &lt;/div&gt;
+
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
-                    <code>./app.component.scss</code>
+                    <code>./page-not-found.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss"></code></pre>
+                <pre class="line-numbers"><code class="language-scss">@mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  html, body {
+    height: 100%;
+    background: linear-gradient(0, #202239, #8595AC);
+  }
+  ::selection {
+    background: #CDD4DE;
+  }
+  
+  .page {
+    @include center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    font-family: Roboto, sans-serif;
+    background: #0D0C1E;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+  }
+
+    nav {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      position: relative;
+      float: left;
+      
+      &amp;::before {
+        content: &#x27;&#x27;;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #565c73;
+        border-radius: 2px;
+        box-shadow: 0 5px 0 #565c73, 0 10px 0 #565c73;
+      }
+    }
+    
+    .search {
+      float: right;
+      cursor: pointer;
+      
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  
+    
+  .content {
+    text-align: center;
+    padding-top: 118px;
+    color: #CDD4DE;
+    
+    h1 {
+      font-weight: 900;
+      font-size: 190px;
+      color: black;
+      line-height: 1;
+      margin-bottom: -10px;
+      opacity: 0.6;
+    }
+    
+    h2 {
+      font-weight: 700;
+      color: black;
+      font-size: 46px;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+    
+    p {
+      font-weight: 300;
+      color: black;
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 140px;
+    }
+    
+    a {
+      position: relative;
+      bottom: 40px;
+      color: black;
+      font-weight: 300;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 3px solid #CDD4DE;
+      padding: 8px 14px;
+      border-radius: 4px;
+      opacity: 0.4;
+      cursor: pointer;
+    }
+
+    .second {
+        position: relative;
+        bottom: 40px;
+        color: white;
+        font-weight: 300;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 3px solid #CDD4DE;
+        padding: 8px 14px;
+        border-radius: 4px;
+        opacity: 0.4;
+        cursor: pointer;
+      }
+  }
+  
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    transform: scale(1.1);
+  }</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -311,10 +409,10 @@ export class AppComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><router-outlet></router-outlet></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="page">    <div class="content">      <h1>404</h1>      <h2>Page not found</h2>      <p>I tried to catch some fog, but i mist</p>      <a routerLink="/home"> <strong> RITORNA ALLA HOME </strong></a> <br> <br> <br> <br>      <a class="second" routerLink="/login"> <strong> VAI ALLA LOGIN </strong></a>    </div>      <img src="http://www.supah.it/dribbble/008/008.jpg" />  </div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CustomizeComponent', 'selector': 'app-customize'},{'name': 'CustomizeFormComponent', 'selector': 'app-customize-form'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputTextComponent', 'selector': 'app-input-text'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'SignupComponent', 'selector': 'app-signup'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+    var ACTUAL_COMPONENT = {'name': 'PageNotFoundComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -349,7 +447,7 @@ export class AppComponent implements OnInit {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PageNotFoundComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

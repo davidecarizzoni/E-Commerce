@@ -34,7 +34,7 @@
 
 <ol class="breadcrumb">
     <li>Modules</li>
-    <li>AppRoutingModule</li>
+    <li>PageNotFoundRoutingModule</li>
 </ol>
 
 
@@ -54,7 +54,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/app-routing.module.ts</code>
+            <code>src/app/features/page-not-found/page-not-found-routing.module.ts</code>
         </p>
 
 
@@ -72,26 +72,16 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
-import { LoginGuardService } from &#x27;./core/guards/login-guard.service&#x27;;
 
+import { PageNotFoundComponent } from &#x27;./page-not-found.component&#x27;;
 
-const routes: Routes &#x3D; [
-  { path: &#x27;&#x27;, redirectTo: &#x27;/login&#x27;, pathMatch: &#x27;full&#x27; },
-  { path: &#x27;login&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./features/login/login.module&#x27;).then(m &#x3D;&gt; m.LoginModule)&quot; },
-  { path: &#x27;signup&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./features/signup/signup.module&#x27;).then(m &#x3D;&gt; m.SignupModule)&quot; },
-  { path: &#x27;customize&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./features/customize/customize.module&#x27;).then(m &#x3D;&gt; m.CustomizeModule)&quot;, canLoad: [LoginGuardService] },
-  { path: &#x27;customize/:id&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./features/customize/customize.module&#x27;).then(m &#x3D;&gt; m.CustomizeModule)&quot;, canLoad: [LoginGuardService] },
-  { path: &#x27;home&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./features/home/home.module&#x27;).then(m &#x3D;&gt; m.HomeModule)&quot;, canLoad: [LoginGuardService] },
-  { path: &#x27;cart&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./features/cart/cart.module&#x27;).then(m &#x3D;&gt; m.CartModule)&quot;,canLoad: [LoginGuardService]  },
-  { path: &#x27;**&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./features/page-not-found/page-not-found.module&#x27;).then(m &#x3D;&gt; m.PageNotFoundModule)&quot; }
-];
+const routes: Routes &#x3D; [{ path: &#x27;&#x27;, component: PageNotFoundComponent }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
-
+export class PageNotFoundRoutingModule { }
 </code></pre>
     </div>
 </div>
@@ -127,7 +117,7 @@ export class AppRoutingModule { }
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppRoutingModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PageNotFoundRoutingModule.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
