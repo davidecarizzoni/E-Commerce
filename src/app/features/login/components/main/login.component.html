@@ -14,14 +14,17 @@
             <input formControlName="username" id="username" placeholder="Username" class="inputFields" required>
         </div>
         <div>
-            <input formControlName="password" id="password" placeholder="Password" class="inputFieldsPassword" required>
-            <!-- Implementare copertura PW -->
-            <img src="../../../assets/icone/eye.png" alt="occhio" class="eye">
+            <input formControlName="password" id="password" placeholder="Password" class="inputFieldsPassword" [type]="showPw ? 'text' : 'password'"required>
+            <ng-container *ngIf="showPw">
+                <img (click)="showPassword()" src="../../../assets/icone/eye.png" alt="occhio" class="eye">
+            </ng-container>
+            <ng-container *ngIf="!showPw">
+                <img (click)="showPassword()" src="../../../assets/icone/eye-off.png" alt="occhio" class="eye">
+            </ng-container>
         </div>
         <div>
             <span class="password">Memorizza password</span>
             <label class="switch">
-                <!-- Implementare memorizza PW -->
                 <input type="checkbox" >
                 <span class="slider round"></span>
             </label>

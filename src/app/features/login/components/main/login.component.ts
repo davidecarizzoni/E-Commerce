@@ -8,6 +8,8 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  
+  showPw: boolean;
   loginForm: FormGroup;
 
   constructor(fb: FormBuilder, private loginService: LoginService) {
@@ -20,6 +22,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showPassword(){
+    this.showPw = !this.showPw;
+  }
+  
   doLogin() {
     this.loginService.executeLogin(this.loginForm.get('username').value, this.loginForm.get('password').value);
   }

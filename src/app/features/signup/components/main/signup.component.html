@@ -16,8 +16,13 @@
             <input id="username" placeholder="Username" formControlName="username" class="inputFields" required minlength="8">
         </div>
         <div>
-            <input id="password" placeholder="Password" formControlName="password" class="inputFieldsPassword" required minlength="8">
-            <img src="../../../assets/icone/eye.png" alt="occhio" class="eye">
+            <input formControlName="password" id="password" placeholder="Password" class="inputFieldsPassword" [type]="showPw ? 'text' : 'password'"required>
+            <ng-container *ngIf="showPw">
+                <img (click)="showPassword()" src="../../../assets/icone/eye.png" alt="occhio" class="eye">
+            </ng-container>
+            <ng-container *ngIf="!showPw">
+                <img (click)="showPassword()" src="../../../assets/icone/eye-off.png" alt="occhio" class="eye">
+            </ng-container>
         </div>
         <br><br>
         <button type="submit">
